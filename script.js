@@ -170,4 +170,55 @@
         });
     }
 
+    // Cookie Consent Banner
+    function loadAnalytics() {
+        // Add analytics scripts here when ready.
+        // This function is only called when the user has accepted cookies.
+        //
+        // Example for Google Analytics:
+        // var script = document.createElement('script');
+        // script.src = 'https://www.googletagmanager.com/gtag/js?id=YOUR-ID';
+        // script.async = true;
+        // document.head.appendChild(script);
+        // script.onload = function() {
+        //     window.dataLayer = window.dataLayer || [];
+        //     function gtag(){dataLayer.push(arguments);}
+        //     gtag('js', new Date());
+        //     gtag('config', 'YOUR-ID');
+        // };
+    }
+
+    (function handleCookieConsent() {
+        var banner = document.getElementById('cookie-consent');
+        var acceptBtn = document.getElementById('cookie-accept');
+        var declineBtn = document.getElementById('cookie-decline');
+
+        if (!banner) return;
+
+        var consent = localStorage.getItem('cookie-consent');
+
+        if (consent === 'accepted') {
+            loadAnalytics();
+            return;
+        }
+
+        if (consent === 'declined') {
+            return;
+        }
+
+        // No prior choice — show the banner
+        banner.removeAttribute('hidden');
+
+        acceptBtn.addEventListener('click', function() {
+            localStorage.setItem('cookie-consent', 'accepted');
+            banner.setAttribute('hidden', '');
+            loadAnalytics();
+        });
+
+        declineBtn.addEventListener('click', function() {
+            localStorage.setItem('cookie-consent', 'declined');
+            banner.setAttribute('hidden', '');
+        });
+    })();
+
 })();
