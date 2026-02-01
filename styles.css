@@ -464,22 +464,101 @@ a:hover {
     margin: 0 auto;
 }
 
-/* --- About Section (Reduced spacing) --- */
+/* --- About Page --- */
+.about-section {
+    padding: 0 0 3rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 4px;
+}
+
+.about-grid .about-content {
+    text-align: left;
+    max-width: none;
+    margin: 0;
+}
+
+.about-grid .about-content h2 {
+    margin-bottom: 1rem;
+}
+
+.about-grid .about-content p {
+    margin: 0 0 1.25rem;
+    color: #555;
+}
+
+.credentials {
+    margin-top: 1.5rem;
+}
+
+.credentials h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.credentials ul {
+    list-style: disc;
+    margin-left: 1.25rem;
+}
+
+.credentials li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.about-personal {
+    padding: 3rem 0;
+    background-color: var(--color-cream);
+}
+
+.about-personal .container {
+    max-width: 800px;
+    text-align: center;
+}
+
+.about-personal img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 4px;
+    margin: 1.5rem auto;
+    display: block;
+}
+
+.about-personal p:last-child {
+    color: #555;
+    margin-top: 1rem;
+}
+
+/* --- About Preview (Homepage) --- */
 .about-preview {
     padding: 3rem 0;
 }
 
-.about-content {
+.about-preview .about-content {
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
 }
 
-.about-content h2 {
+.about-preview .about-content h2 {
     margin-bottom: 1rem;
 }
 
-.about-content p {
+.about-preview .about-content p {
     margin: 0 auto 1.5rem;
     color: #555;
 }
@@ -753,6 +832,19 @@ a:hover {
     .resource-grid {
         grid-template-columns: 1fr;
         gap: 1.25rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 300px;
     }
 
     .footer-content {
