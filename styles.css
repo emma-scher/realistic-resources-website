@@ -1,13 +1,13 @@
 /* ============================================
    REALISTIC RESOURCES - MAIN STYLESHEET
-   Updated: Fixes Gumroad button styling & spacing
    ============================================ */
 
 /* --- CSS Variables --- */
 :root {
     --color-cream: #f0ebe9;
+    --color-blush: #f4b9b8;
     --color-sage: #96ad90;
-    --color-olive: #696344;
+    --color-olive: #828a70;
     --color-gold: #E4A84A;
     --color-charcoal: #2E2E2E;
     --color-slate: #7A89A6;
@@ -257,34 +257,6 @@ a:hover {
 .btn-small {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
-}
-
-/* --- GUMROAD BUTTON OVERRIDE --- */
-/* This removes the ugly black Gumroad styling */
-.gumroad-button {
-    background-color: transparent !important;
-    color: var(--color-olive) !important;
-    border: 1.5px solid var(--color-olive) !important;
-    padding: 0.5rem 1rem !important;
-    font-size: 0.875rem !important;
-    font-family: var(--font-body) !important;
-    font-weight: 500 !important;
-    border-radius: 4px !important;
-    text-decoration: none !important;
-    display: inline-block !important;
-    transition: all 0.2s ease !important;
-}
-
-.gumroad-button:hover {
-    background-color: var(--color-olive) !important;
-    color: white !important;
-}
-
-/* Hide Gumroad's injected logo/branding */
-.gumroad-button::after,
-.gumroad-button img,
-.gumroad-button svg {
-    display: none !important;
 }
 
 /* --- Filter Tabs --- */
