@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Neutral - Realistic Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0.5in 0.6in; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            color: #2E2E2E;
+            background: #ffffff;
+        }
+
+        /* ---- Toolbar (screen only) ---- */
+        .toolbar {
+            background: #f0ebe9;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #D9C6B0;
+            font-size: 9pt;
+        }
+        .toolbar-brand {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11pt;
+            font-weight: 500;
+            color: #2E2E2E;
+        }
+        .toolbar-sep { color: #D9C6B0; margin: 0 0.3rem; }
+        .toolbar-actions { display: flex; gap: 0.5rem; }
+        .btn-tool {
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .btn-tool:hover { opacity: 0.85; }
+        .btn-primary { background: #96ad90; color: #fff; }
+        .btn-secondary { background: transparent; border: 1px solid #D9C6B0; color: #828a70; }
+
+        /* ---- Content wrapper ---- */
+        .content-wrap {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 3rem;
+        }
+
+        /* ---- Page/Section ---- */
+        .page {
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #f0ebe9;
+        }
+        .page:last-child { border-bottom: none; margin-bottom: 0; }
+
+        /* ---- Cover header ---- */
+        .pdf-header {
+            border-bottom: 2px solid #96ad90;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .pdf-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 30pt;
+            font-weight: 600;
+            color: #2E2E2E;
+            letter-spacing: -0.02em;
+        }
+        .pdf-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 14pt;
+            color: #7A89A6;
+            margin-bottom: 0.15rem;
+        }
+        .pdf-meta {
+            font-size: 10pt;
+            color: #828a70;
+            margin-top: 0.15rem;
+            font-style: italic;
+        }
+
+        /* ---- Inner page headers ---- */
+        .page-header-inner {
+            border-bottom: 2px solid #96ad90;
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .page-header-inner h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 20pt;
+            font-weight: 500;
+            color: #2E2E2E;
+            margin: 0; border: none; padding: 0;
+        }
+        .page-header-inner .page-label {
+            font-family: 'Caveat', cursive;
+            font-size: 13pt;
+            color: #7A89A6;
+        }
+
+        /* ---- Typography ---- */
+        h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 14pt;
+            font-weight: 500;
+            color: #2E2E2E;
+            margin-top: 0.9rem;
+            margin-bottom: 0.35rem;
+            border-bottom: 1px solid #f0ebe9;
+            padding-bottom: 0.1rem;
+        }
+        h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 500;
+            color: #2E2E2E;
+            margin-top: 0.6rem;
+            margin-bottom: 0.25rem;
+        }
+        p { margin-bottom: 0.4rem; }
+        ul, ol { margin-left: 1.25rem; margin-bottom: 0.5rem; }
+        li { margin-bottom: 0.25rem; }
+        ul li::marker { color: #96ad90; }
+        strong { font-weight: 500; }
+        em { color: #5a5a5a; font-style: italic; }
+
+        /* ---- Decorative ---- */
+        .divider {
+            text-align: center;
+            color: #96ad90;
+            font-size: 10pt;
+            margin: 0.6rem 0;
+            letter-spacing: 0.5em;
+        }
+        .take-what-works {
+            text-align: center;
+            background: #f0ebe9;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.9rem;
+            font-family: 'Caveat', cursive;
+            font-size: 12pt;
+            color: #828a70;
+        }
+
+        /* ---- Two-column concept boxes ---- */
+        .concept-columns {
+            display: flex;
+            gap: 0.75rem;
+            margin: 0.6rem 0;
+        }
+        .concept-col {
+            flex: 1;
+            background: #f0ebe9;
+            border-radius: 6px;
+            padding: 0.6rem 0.75rem;
+            page-break-inside: avoid;
+        }
+        .concept-col.is-not { border-top: 3px solid #D9C6B0; }
+        .concept-col.is { border-top: 3px solid #96ad90; }
+        .concept-col h3 { margin-top: 0; font-size: 10.5pt; }
+        .concept-col ul { margin-bottom: 0; }
+        .concept-col li { margin-bottom: 0.15rem; font-size: 9pt; }
+
+        /* ---- Tip box (gold) ---- */
+        .tip-box {
+            background: #F6F6E9;
+            border-left: 4px solid #E4A84A;
+            padding: 0.5rem 0.75rem;
+            margin: 0.6rem 0;
+            page-break-inside: avoid;
+            font-size: 9pt;
+        }
+        .tip-box h3 { margin-top: 0; font-size: 9.5pt; }
+        .tip-box p { margin-bottom: 0; }
+
+        /* ---- Speech bubble ---- */
+        .speech-bubble {
+            background: #f0ebe9;
+            border-radius: 12px;
+            padding: 0.4rem 0.75rem;
+            font-family: 'Caveat', cursive;
+            font-size: 12pt;
+            color: #828a70;
+            text-align: center;
+            position: relative;
+            margin: 0.6rem 0;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #f0ebe9;
+        }
+
+        /* ---- Example scripts ---- */
+        .example-script {
+            font-size: 8.5pt;
+            color: #7A89A6;
+            font-style: italic;
+            margin: 0.1rem 0 0.25rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #D9C6B0;
+        }
+        .example-label {
+            font-weight: 500;
+            font-style: normal;
+            color: #828a70;
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* ---- Grief grid ---- */
+        .grief-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.35rem;
+            margin: 0.4rem 0 0.5rem;
+        }
+        .grief-item {
+            background: #f0ebe9;
+            border-radius: 4px;
+            padding: 0.3rem 0.5rem;
+            font-size: 9pt;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .grief-icon { font-size: 13pt; flex-shrink: 0; }
+        .grief-item strong { display: block; font-size: 9pt; }
+        .grief-item span { font-size: 8pt; color: #5a5a5a; }
+
+        /* ---- Spectrum ---- */
+        .spectrum-container {
+            background: #f0ebe9;
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+        .spectrum-bar {
+            height: 5px;
+            background: linear-gradient(to right, #D9C6B0, #96ad90, #828a70);
+            border-radius: 3px;
+            margin: 0.35rem 0 0.3rem;
+        }
+        .spectrum {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .spectrum-item { text-align: center; font-size: 8.5pt; font-weight: 500; flex: 1; }
+        .spectrum-item.highlighted { color: #828a70; font-weight: 600; font-size: 10pt; }
+        .spectrum-arrow { color: #96ad90; font-size: 11pt; flex: 0 0 auto; padding: 0 0.1rem; }
+        .spectrum-caption {
+            font-family: 'Caveat', cursive;
+            font-size: 11pt;
+            color: #828a70;
+            margin-top: 0.3rem;
+        }
+
+        /* ---- Interactive: Checkboxes ---- */
+        .check-list { list-style: none; margin-left: 0; margin-bottom: 0.5rem; }
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+            margin-bottom: 0.35rem;
+            cursor: pointer;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        .check-item input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            min-width: 15px;
+            border: 1.5px solid #96ad90;
+            border-radius: 3px;
+            background: #fff;
+            cursor: pointer;
+            margin-top: 1px;
+            position: relative;
+            transition: background 0.15s;
+        }
+        .check-item input[type="checkbox"]:checked {
+            background: #96ad90;
+        }
+        .check-item input[type="checkbox"]:checked::after {
+            content: '\2713';
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .check-item input[type="checkbox"]:focus-visible {
+            outline: 2px solid #828a70;
+            outline-offset: 1px;
+        }
+
+        /* ---- Interactive: Textareas ---- */
+        .write-area { margin: 0.35rem 0 0.75rem; }
+        .write-area textarea {
+            width: 100%;
+            border: 1px solid #D9C6B0;
+            border-radius: 5px;
+            background: rgba(240, 235, 233, 0.25);
+            font-family: 'Inter', sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.6;
+            padding: 0.4rem 0.5rem;
+            resize: vertical;
+            outline: none;
+            min-height: 5rem;
+        }
+        .write-area textarea:focus {
+            border-color: #96ad90;
+            background: rgba(150, 173, 144, 0.04);
+        }
+        .write-area textarea::placeholder {
+            color: #b5b5b5;
+            font-style: italic;
+        }
+
+        /* ---- Interactive: Inline text input ---- */
+        .inline-input {
+            border: none;
+            border-bottom: 1px solid #D9C6B0;
+            background: transparent;
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0 0.2rem;
+            width: 180px;
+            outline: none;
+        }
+        .inline-input:focus { border-bottom-color: #96ad90; }
+
+        /* ---- Steps ---- */
+        .step {
+            margin-bottom: 0.75rem;
+            page-break-inside: avoid;
+        }
+        .step-header {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11.5pt;
+            font-weight: 600;
+            color: #828a70;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .step-number {
+            background: #96ad90;
+            color: #fff;
+            width: 19px; height: 19px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .step p { font-size: 9pt; }
+
+        /* ---- Reset technique box ---- */
+        .reset-box {
+            background: #f0ebe9;
+            border: 1px solid #96ad90;
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            margin: 0.35rem 0;
+            page-break-inside: avoid;
+        }
+        .reset-box ol { margin-bottom: 0.2rem; font-size: 9pt; }
+        .reset-box li { margin-bottom: 0.15rem; }
+        .reset-box .mantra {
+            font-family: 'Caveat', cursive;
+            color: #828a70;
+            text-align: center;
+            margin-top: 0.35rem;
+            margin-bottom: 0;
+            font-size: 13pt;
+        }
+        .reset-box .skip-note {
+            font-size: 8pt;
+            color: #7A89A6;
+            text-align: center;
+            margin-top: 0.2rem;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        /* ---- Grounding reminders ---- */
+        .reminder {
+            background: #f0ebe9;
+            padding: 0.4rem 0.6rem;
+            margin-bottom: 0.35rem;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .reminder-icon { font-size: 14pt; flex-shrink: 0; }
+
+        /* ---- Reading rec ---- */
+        .reading-rec {
+            background: #F6F6E9;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            page-break-inside: avoid;
+            font-size: 9pt;
+        }
+        .reading-rec h3 { margin-top: 0; font-size: 10pt; }
+
+        /* ---- Footer ---- */
+        .pdf-footer {
+            padding-top: 0.4rem;
+            border-top: 1px solid #f0ebe9;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .pdf-footer p {
+            font-size: 7.5pt;
+            color: #7A89A6;
+            margin-bottom: 0.1rem;
+        }
+        .footer-logo {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 9pt;
+            font-weight: 500;
+            color: #2E2E2E;
+        }
+
+        /* ============ PRINT STYLES ============ */
+        @media print {
+            body { background: #fff; font-size: 9.5pt; }
+            .toolbar { display: none !important; }
+            .content-wrap { max-width: none; margin: 0; padding: 0; }
+
+            .page {
+                page-break-after: always;
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: none;
+            }
+            .page:last-child { page-break-after: auto; }
+
+            h2 { font-size: 13pt; margin-top: 0.7rem; margin-bottom: 0.3rem; }
+            h3 { font-size: 11pt; margin-top: 0.5rem; }
+            p { margin-bottom: 0.3rem; }
+            .pdf-header { margin-bottom: 0.9rem; }
+            .pdf-title { font-size: 28pt; }
+            .take-what-works { padding: 0.4rem 0.75rem; margin-bottom: 0.7rem; font-size: 11pt; }
+
+            .concept-columns { gap: 0.5rem; margin: 0.4rem 0; }
+            .concept-col { padding: 0.45rem 0.6rem; }
+
+            .grief-grid { gap: 0.25rem; margin: 0.3rem 0 0.4rem; }
+            .grief-item { padding: 0.25rem 0.4rem; }
+
+            .spectrum-container { padding: 0.4rem 0.6rem; margin: 0.4rem 0; }
+
+            .tip-box { padding: 0.4rem 0.6rem; margin: 0.5rem 0; }
+            .speech-bubble { margin: 0.4rem 0; padding: 0.3rem 0.6rem; font-size: 11pt; }
+
+            .step { margin-bottom: 0.5rem; }
+            .step p { font-size: 8.5pt; }
+            .example-script { font-size: 8pt; }
+
+            .write-area { margin: 0.2rem 0 0.5rem; }
+            .write-area textarea {
+                border: none;
+                border-radius: 0;
+                background: transparent;
+                resize: none;
+                padding: 0;
+                min-height: auto;
+                height: 3.6rem;
+                font-size: 9pt;
+                line-height: 1.2rem;
+                background-image: repeating-linear-gradient(
+                    to bottom,
+                    transparent,
+                    transparent calc(1.2rem - 1px),
+                    #D9C6B0 calc(1.2rem - 1px),
+                    #D9C6B0 1.2rem
+                );
+            }
+
+            .check-item { margin-bottom: 0.25rem; font-size: 9pt; }
+            .check-item input[type="checkbox"] {
+                width: 12px; height: 12px; min-width: 12px;
+                border-width: 1px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .reset-box { padding: 0.4rem 0.6rem; }
+            .reset-box ol { font-size: 8.5pt; }
+            .reset-box .mantra { font-size: 12pt; margin-top: 0.25rem; }
+            .reset-box .skip-note { font-size: 7.5pt; margin-top: 0.15rem; }
+
+            .reminder { padding: 0.3rem 0.5rem; margin-bottom: 0.25rem; font-size: 9pt; }
+            .reading-rec { padding: 0.4rem 0.6rem; font-size: 8.5pt; }
+            .pdf-footer { margin-top: 0.5rem; }
+
+            .divider { margin: 0.4rem 0; }
+
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toolbar (hidden in print) -->
+    <div class="toolbar" role="banner">
+        <span class="toolbar-brand">Finding Neutral <span class="toolbar-sep">|</span> Realistic Resources</span>
+        <div class="toolbar-actions">
+            <button onclick="clearProgress()" class="btn-tool btn-secondary" title="Clear all responses">Clear</button>
+            <button onclick="window.print()" class="btn-tool btn-primary" title="Print or save as PDF">Save as PDF</button>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+
+        <!-- ======================== -->
+        <!-- PAGE 1: COVER + FRAMING -->
+        <!-- ======================== -->
+        <section class="page">
+            <div class="pdf-header">
+                <div class="pdf-subtitle">A guided reflection from Realistic Resources</div>
+                <h1 class="pdf-title">Finding Neutral</h1>
+                <div class="pdf-meta">A Guide to Making Peace with a Body That Doesn't Cooperate</div>
+            </div>
+
+            <div class="take-what-works">
+                &#10043; Take what works. Leave the rest. Come back when you're ready. &#10043;
+            </div>
+
+            <div class="content-section">
+                <h2>Who This Is For</h2>
+                <p>This guide is for anyone navigating a complicated relationship with their own body. Whether you live with chronic illness, disability, pain, or a body that just doesn't work the way you expected, this is a starting point for loosening the grip that frustration and resentment can have on your day-to-day life.</p>
+                <p>By the end, you'll have a repeatable practice you can use whenever that frustration shows up, and a first step toward a more neutral place.</p>
+            </div>
+
+            <div class="divider">&#10045; &nbsp; &#10045; &nbsp; &#10045;</div>
+
+            <div class="content-section">
+                <h2>What Forgiveness Means Here</h2>
+                <p>The word "forgiveness" can feel loaded. Here's what it means in this context, and what it doesn't.</p>
+
+                <div class="concept-columns">
+                    <div class="concept-col is-not">
+                        <h3>&#10005; Forgiveness is not:</h3>
+                        <ul>
+                            <li>Pretending everything is fine</li>
+                            <li>Giving up on treatment or advocacy</li>
+                            <li>Minimizing what you've been through</li>
+                            <li>Toxic positivity or forced gratitude</li>
+                        </ul>
+                    </div>
+                    <div class="concept-col is">
+                        <h3>&#10003; Forgiveness is:</h3>
+                        <ul>
+                            <li>Releasing the grip resentment has on your energy</li>
+                            <li>Choosing to stop reliving the same painful story on repeat</li>
+                            <li>Making room for something other than anger alongside your reality</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>You don't have to feel positive about your body. You don't have to be grateful for your illness. You just have to be willing to try something different with the energy you're spending on resentment.</p>
+            </div>
+
+            <div class="tip-box">
+                <h3>&#128218; About This Framework</h3>
+                <p>The ideas in this guide are loosely adapted from <em>Forgive for Good</em> by Dr. Fred Luskin. His research focuses on forgiveness as a learnable skill with measurable health benefits. This guide applies those concepts to the experience of living in a body that doesn't cooperate.</p>
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>By Emma Scher | realistic-resources.com</p>
+            </div>
+        </section>
+
+        <!-- ======================== -->
+        <!-- PAGE 2: THE FRAMEWORK   -->
+        <!-- ======================== -->
+        <section class="page">
+            <div class="page-header-inner">
+                <h2 style="border:none; margin:0; padding:0;">The Framework</h2>
+                <span class="page-label">Finding Neutral</span>
+            </div>
+
+            <div class="content-section">
+                <h3>&#9998; Your Grievance Story vs. Your Full Story</h3>
+                <p>When you live with pain, illness, or disability, it's natural to build a story around what your body has taken from you. The career you had to leave, the plans you had to change, the things that used to be easy.</p>
+                <p>That story is real. But when it's the only version you tell yourself, it starts to define everything. Your full story includes the grievance and what you've built alongside it. It makes room for more than loss.</p>
+
+                <div class="example-script">
+                    <span class="example-label">Grievance version:</span> "My body ruined my plans. I can't do what I used to. Everything takes more effort than it should."<br>
+                    <span class="example-label">Full version:</span> "I left a path that wasn't working and found a different one. I've learned things about myself I wouldn't know otherwise. I'm still here."
+                </div>
+            </div>
+
+            <div class="speech-bubble">
+                Both stories are real. You're just choosing which one gets the microphone today.
+            </div>
+
+            <div class="content-section">
+                <h3>&#9829; What You're Actually Grieving</h3>
+                <p>Resentment toward your body often isn't about symptoms. It's about what they represent. Naming the real grief underneath helps take it out of the background.</p>
+
+                <div class="grief-grid">
+                    <div class="grief-item">
+                        <span class="grief-icon">&#128100;</span>
+                        <div><strong>Identity</strong><span>Who you thought you'd be</span></div>
+                    </div>
+                    <div class="grief-item">
+                        <span class="grief-icon">&#9889;</span>
+                        <div><strong>Capability</strong><span>What used to be effortless</span></div>
+                    </div>
+                    <div class="grief-item">
+                        <span class="grief-icon">&#128204;</span>
+                        <div><strong>Plans</strong><span>The life that doesn't fit</span></div>
+                    </div>
+                    <div class="grief-item">
+                        <span class="grief-icon">&#9728;</span>
+                        <div><strong>Ease</strong><span>Not thinking about your body</span></div>
+                    </div>
+                    <div class="grief-item">
+                        <span class="grief-icon">&#129309;</span>
+                        <div><strong>Trust</strong><span>Relying on your body to show up</span></div>
+                    </div>
+                    <div class="grief-item">
+                        <span class="grief-icon">&#10067;</span>
+                        <div><strong>Something else</strong><span>Only you know what it is</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>&#8614; The Spectrum</h3>
+                <p>Forgiveness isn't a switch you flip. It's a spectrum, and any movement counts.</p>
+                <div class="spectrum-container">
+                    <div class="spectrum-bar"></div>
+                    <div class="spectrum">
+                        <div class="spectrum-item">Resentment</div>
+                        <div class="spectrum-arrow">&rarr;</div>
+                        <div class="spectrum-item">Frustration</div>
+                        <div class="spectrum-arrow">&rarr;</div>
+                        <div class="spectrum-item highlighted">Neutrality</div>
+                        <div class="spectrum-arrow">&rarr;</div>
+                        <div class="spectrum-item">Acceptance</div>
+                        <div class="spectrum-arrow">&rarr;</div>
+                        <div class="spectrum-item">Peace</div>
+                    </div>
+                    <div class="spectrum-caption">You don't have to get to peace. Neutrality is enough.</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h3>&#128161; Good to know</h3>
+                <p>This isn't linear. You might move toward neutrality one week and land back in resentment the next. That's not failure. The practice is in coming back, not in staying put.</p>
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>realistic-resources.com</p>
+            </div>
+        </section>
+
+        <!-- ======================== -->
+        <!-- PAGE 3: GUIDED EXERCISE -->
+        <!-- ======================== -->
+        <section class="page">
+            <div class="page-header-inner">
+                <h2 style="border:none; margin:0; padding:0;">Guided Exercise</h2>
+                <span class="page-label">Finding Neutral</span>
+            </div>
+
+            <div class="step">
+                <div class="step-header"><span class="step-number">1</span> Write the Grievance Version</div>
+                <p>What has your body taken from you? What have you lost, missed, or had to give up? Don't filter it.</p>
+                <p class="example-script"><span class="example-label">Example:</span> "I had to leave my career. I can't travel the way I used to. I spend more time managing symptoms than doing things I enjoy."</p>
+                <div class="write-area">
+                    <textarea rows="3" placeholder="Write yours here..."></textarea>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header"><span class="step-number">2</span> Write the Full Version</div>
+                <p>What have you built, adapted, or discovered because of or alongside your experience? Not silver linings. The full picture.</p>
+                <p class="example-script"><span class="example-label">Example:</span> "I've learned to advocate for myself. I built a career that works with my reality. I know what matters to me now."</p>
+                <div class="write-area">
+                    <textarea rows="3" placeholder="Write yours here..."></textarea>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header"><span class="step-number">3</span> Name What You're Actually Grieving</div>
+                <p>Check what resonates. You can choose more than one.</p>
+                <div class="check-list">
+                    <label class="check-item"><input type="checkbox"><span>The identity I expected to have</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Physical capability I used to have</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Plans I had to change or give up</span></label>
+                    <label class="check-item"><input type="checkbox"><span>The ease of not having to think about my body</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Trust that my body will show up when I need it</span></label>
+                    <label class="check-item"><input type="checkbox"><span>Other: <input type="text" class="inline-input" placeholder="describe here"></span></label>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header"><span class="step-number">4</span> The Reset</div>
+                <p>When resentment flares up, try one or more of these. Use what helps, skip what doesn't.</p>
+                <div class="reset-box">
+                    <ol>
+                        <li><strong>Breathe</strong> (if this works for you): In for 4 counts, out for 6. Twice.</li>
+                        <li><strong>Redirect:</strong> Bring to mind one thing your body can do today, even if it's small. Hold it for 15 seconds.</li>
+                        <li><strong>Reframe:</strong> Say this (or something that fits you better):</li>
+                    </ol>
+                    <p class="mantra">"I can be frustrated and still move forward."</p>
+                    <p class="skip-note">Some days, breathing exercises make it worse. That's fine. Skip to step 2 or 3. The point is having options, not following rules.</p>
+                </div>
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>realistic-resources.com</p>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- PAGE 4: MAKING IT REPEATABLE       -->
+        <!-- ================================== -->
+        <section class="page">
+            <div class="page-header-inner">
+                <h2 style="border:none; margin:0; padding:0;">Making It Repeatable</h2>
+                <span class="page-label">Finding Neutral</span>
+            </div>
+
+            <div class="tip-box">
+                <h3>&#128161; A note on this</h3>
+                <p>You don't have to believe the reframe yet. You just have to practice it. Repetition builds the pathway. Belief comes later.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>&#128197; Use This When...</h3>
+                <div class="check-list">
+                    <label class="check-item"><input type="checkbox"><span>You're having a bad body day</span></label>
+                    <label class="check-item"><input type="checkbox"><span>After a flare, setback, or new symptom</span></label>
+                    <label class="check-item"><input type="checkbox"><span>After a hard appointment or diagnosis</span></label>
+                    <label class="check-item"><input type="checkbox"><span>When grief about your body resurfaces out of nowhere</span></label>
+                    <label class="check-item"><input type="checkbox"><span>When you catch yourself stuck in the grievance story</span></label>
+                    <label class="check-item"><input type="checkbox"><span>When someone says something that hits a nerve about your body</span></label>
+                </div>
+            </div>
+
+            <div class="speech-bubble">
+                You don't need to feel ready. You just need to be willing to try.
+            </div>
+
+            <div class="content-section">
+                <h3>&#9875; Grounding Reminders</h3>
+                <p style="font-size: 8.5pt; color: #7A89A6; margin-bottom: 0.3rem;">These aren't affirmations. They're anchors. Use them when you need something to hold onto.</p>
+                <div class="reminder">
+                    <span class="reminder-icon">&#127793;</span>
+                    "Your body is not your enemy. It's doing its best with what it has."
+                </div>
+                <div class="reminder">
+                    <span class="reminder-icon">&#127793;</span>
+                    "Neutral is a valid destination. You don't owe anyone positivity about your body."
+                </div>
+                <div class="reminder">
+                    <span class="reminder-icon">&#127793;</span>
+                    "You are not broken. The world around you wasn't built for you, and that's not your fault."
+                </div>
+            </div>
+
+            <div class="divider">&#10045; &nbsp; &#10045; &nbsp; &#10045;</div>
+
+            <div class="reading-rec">
+                <h3>&#128218; Recommended Reading</h3>
+                <p><strong><em>Forgive for Good</em></strong> by Dr. Fred Luskin</p>
+                <p style="margin-bottom:0;">The research behind this guide. Luskin's work focuses on forgiveness as a learnable skill with measurable health benefits. If this resonated, the book goes much deeper.</p>
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>By Emma Scher | realistic-resources.com</p>
+                <p style="font-family: 'Caveat', cursive; font-size: 10pt; color: #828a70;">Resources that meet you where you are</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'finding-neutral-v1';
+
+        function saveProgress() {
+            try {
+                const data = {};
+                document.querySelectorAll('input[type="checkbox"]').forEach(function(cb, i) {
+                    data['cb_' + i] = cb.checked;
+                });
+                document.querySelectorAll('textarea').forEach(function(ta, i) {
+                    data['ta_' + i] = ta.value;
+                });
+                document.querySelectorAll('input[type="text"]').forEach(function(ti, i) {
+                    data['ti_' + i] = ti.value;
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            } catch(e) { /* localStorage unavailable */ }
+        }
+
+        function loadProgress() {
+            try {
+                var raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return;
+                var data = JSON.parse(raw);
+                document.querySelectorAll('input[type="checkbox"]').forEach(function(cb, i) {
+                    if (data['cb_' + i] !== undefined) cb.checked = data['cb_' + i];
+                });
+                document.querySelectorAll('textarea').forEach(function(ta, i) {
+                    if (data['ta_' + i] !== undefined) ta.value = data['ta_' + i];
+                });
+                document.querySelectorAll('input[type="text"]').forEach(function(ti, i) {
+                    if (data['ti_' + i] !== undefined) ti.value = data['ti_' + i];
+                });
+            } catch(e) { /* localStorage unavailable */ }
+        }
+
+        function clearProgress() {
+            if (!confirm('Clear all your responses? This cannot be undone.')) return;
+            document.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+            document.querySelectorAll('textarea').forEach(function(ta) { ta.value = ''; });
+            document.querySelectorAll('input[type="text"]').forEach(function(ti) { ti.value = ''; });
+            try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+        }
+
+        document.addEventListener('change', saveProgress);
+        document.addEventListener('input', saveProgress);
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>

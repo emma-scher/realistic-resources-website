@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Work Travel Packing List - Realistic Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0.5in 0.55in; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            color: #2E2E2E;
+            background: #ffffff;
+        }
+
+        /* ---- Toolbar (screen only) ---- */
+        .toolbar {
+            background: #f0ebe9;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #D9C6B0;
+            font-size: 9pt;
+        }
+        .toolbar-brand {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11pt;
+            font-weight: 500;
+        }
+        .toolbar-sep { color: #D9C6B0; margin: 0 0.3rem; }
+        .toolbar-actions { display: flex; gap: 0.5rem; }
+        .btn-tool {
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .btn-tool:hover { opacity: 0.85; }
+        .btn-primary { background: #96ad90; color: #fff; }
+        .btn-secondary { background: transparent; border: 1px solid #D9C6B0; color: #828a70; }
+
+        /* ---- Content wrapper ---- */
+        .content-wrap {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 3rem;
+        }
+
+        /* ---- Page/Section ---- */
+        .page {
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #f0ebe9;
+        }
+        .page:last-child { border-bottom: none; margin-bottom: 0; }
+
+        /* ---- Header ---- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2px solid #96ad90;
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.65rem;
+        }
+        .header-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 20pt;
+            font-weight: 500;
+        }
+        .header-script {
+            font-family: 'Caveat', cursive;
+            font-size: 18pt;
+            color: #828a70;
+        }
+
+        /* ---- Hero bar ---- */
+        .hero-bar {
+            background: #f0ebe9;
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            margin-bottom: 0.85rem;
+            text-align: center;
+        }
+        .hero-bar h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 15pt;
+            font-weight: 600;
+            color: #828a70;
+            margin-bottom: 0.2rem;
+            border: none; padding: 0;
+        }
+        .hero-bar p { font-size: 9.5pt; max-width: 550px; margin: 0 auto; }
+        .hero-tagline {
+            font-family: 'Caveat', cursive;
+            font-size: 12pt;
+            color: #828a70;
+            margin-top: 0.3rem;
+        }
+
+        /* ---- Layout ---- */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-bottom: 0.65rem;
+        }
+
+        /* ---- Card ---- */
+        .card {
+            border: 1px solid #D9C6B0;
+            border-radius: 8px;
+            padding: 0.6rem 0.7rem;
+        }
+        .card-sage { background: rgba(150, 173, 144, 0.08); border-color: #96ad90; }
+        .card-gold { background: rgba(228, 168, 74, 0.06); border-color: #E4A84A; }
+        .card h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .card-icon { font-size: 13pt; }
+        .card p { font-size: 9pt; margin-bottom: 0.3rem; }
+        .card ul, .card ol { margin-left: 1.25rem; margin-bottom: 0.2rem; font-size: 9pt; }
+        .card li { margin-bottom: 0.15rem; }
+        .card ul li::marker { color: #96ad90; }
+        .card ol li::marker { color: #828a70; font-weight: 500; }
+        .card .goal { font-size: 9pt; margin-top: 0.2rem; }
+        .card .goal strong { color: #828a70; }
+
+        /* ---- Speech bubble ---- */
+        .speech-bubble {
+            background: #f0ebe9;
+            border-radius: 12px;
+            padding: 0.4rem 0.75rem;
+            font-family: 'Caveat', cursive;
+            font-size: 12pt;
+            color: #828a70;
+            text-align: center;
+            position: relative;
+            margin-bottom: 0.65rem;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #f0ebe9;
+        }
+
+        /* ---- Pro tip ---- */
+        .pro-tip {
+            background: #F6F6E9;
+            border-radius: 6px;
+            padding: 0.3rem 0.5rem;
+            margin-top: 0.35rem;
+            font-size: 8pt;
+            line-height: 1.4;
+        }
+        .pro-tip strong { color: #E4A84A; }
+
+        /* ---- Interactive: Textarea ---- */
+        .write-area { margin-top: 0.35rem; }
+        .write-area textarea {
+            width: 100%;
+            border: 1px solid #D9C6B0;
+            border-radius: 5px;
+            background: rgba(240, 235, 233, 0.25);
+            font-family: 'Inter', sans-serif;
+            font-size: 9pt;
+            line-height: 1.6;
+            padding: 0.4rem 0.5rem;
+            resize: vertical;
+            outline: none;
+            min-height: 5rem;
+        }
+        .write-area textarea:focus {
+            border-color: #96ad90;
+            background: rgba(150, 173, 144, 0.04);
+        }
+        .write-area textarea::placeholder { color: #b5b5b5; font-style: italic; }
+
+        /* ---- Section header (page 2) ---- */
+        .section-header {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 600;
+            padding-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
+            border-bottom: 1px solid #f0ebe9;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .section-icon { font-size: 13pt; }
+        .section-subtitle {
+            font-size: 7.5pt;
+            color: #828a70;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.2rem;
+        }
+
+        /* ---- Interactive: Checkboxes ---- */
+        .checklist { list-style: none; margin: 0; }
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+            margin-bottom: 0.3rem;
+            cursor: pointer;
+            font-size: 9.5pt;
+            line-height: 1.35;
+        }
+        .check-item input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            min-width: 14px;
+            border: 1.5px solid #96ad90;
+            border-radius: 2px;
+            background: #fff;
+            cursor: pointer;
+            margin-top: 1px;
+            position: relative;
+            transition: background 0.15s;
+        }
+        .check-item input[type="checkbox"]:checked {
+            background: #96ad90;
+        }
+        .check-item input[type="checkbox"]:checked::after {
+            content: '\2713';
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .check-item input[type="checkbox"]:focus-visible {
+            outline: 2px solid #828a70;
+            outline-offset: 1px;
+        }
+
+        /* ---- Inline text input ---- */
+        .inline-input {
+            border: none;
+            border-bottom: 1px solid #D9C6B0;
+            background: transparent;
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0 0.2rem;
+            width: 170px;
+            outline: none;
+        }
+        .inline-input:focus { border-bottom-color: #96ad90; }
+
+        /* ---- Checklist sections ---- */
+        .checklist-section {
+            border: 1px solid #D9C6B0;
+            border-radius: 8px;
+            padding: 0.5rem 0.65rem;
+            margin-bottom: 0.5rem;
+        }
+        .checklist-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem; }
+        .checklist-three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 0.75rem; }
+
+        /* ---- Notes row ---- */
+        .notes-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.4rem;
+        }
+        .notes-box {
+            border: 1px solid #D9C6B0;
+            border-radius: 8px;
+            padding: 0.5rem 0.65rem;
+        }
+        .notes-box textarea {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            font-size: 9pt;
+            line-height: 1.5;
+            padding: 0.2rem 0;
+            resize: vertical;
+            outline: none;
+            min-height: 3rem;
+        }
+        .notes-box textarea::placeholder { color: #b5b5b5; font-style: italic; }
+
+        /* ---- Footer ---- */
+        .footer {
+            margin-top: 0.5rem;
+            padding-top: 0.35rem;
+            border-top: 2px solid #96ad90;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-left {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 9pt;
+        }
+        .footer-center {
+            font-family: 'Caveat', cursive;
+            font-size: 9pt;
+            color: #828a70;
+        }
+        .footer-right { font-size: 7pt; color: #7A89A6; }
+
+        /* ============ PRINT STYLES ============ */
+        @media print {
+            body { background: #fff; font-size: 9.5pt; }
+            .toolbar { display: none !important; }
+            .content-wrap { max-width: none; margin: 0; padding: 0; }
+
+            .page {
+                page-break-after: always;
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: none;
+            }
+            .page:last-child { page-break-after: auto; }
+
+            .header { padding-bottom: 0.35rem; margin-bottom: 0.5rem; }
+            .header-title { font-size: 19pt; }
+            .header-script { font-size: 16pt; }
+            .hero-bar { padding: 0.6rem 0.75rem; margin-bottom: 0.65rem; }
+            .hero-bar h2 { font-size: 14pt; }
+            .hero-bar p { font-size: 9pt; }
+
+            .two-col { gap: 0.5rem; margin-bottom: 0.5rem; }
+            .card { padding: 0.5rem 0.6rem; }
+            .speech-bubble { margin-bottom: 0.5rem; font-size: 11pt; padding: 0.3rem 0.6rem; }
+
+            .write-area textarea {
+                border: none;
+                border-radius: 0;
+                background: transparent;
+                resize: none;
+                padding: 0;
+                min-height: auto;
+                height: 4.5rem;
+                font-size: 9pt;
+                line-height: 1.25rem;
+                background-image: repeating-linear-gradient(
+                    to bottom,
+                    transparent,
+                    transparent calc(1.25rem - 1px),
+                    #D9C6B0 calc(1.25rem - 1px),
+                    #D9C6B0 1.25rem
+                );
+            }
+
+            .notes-box textarea {
+                min-height: auto;
+                height: 2.5rem;
+                resize: none;
+                line-height: 1.25rem;
+                background-image: repeating-linear-gradient(
+                    to bottom,
+                    transparent,
+                    transparent calc(1.25rem - 1px),
+                    #D9C6B0 calc(1.25rem - 1px),
+                    #D9C6B0 1.25rem
+                );
+            }
+
+            .checklist-section { padding: 0.4rem 0.55rem; margin-bottom: 0.4rem; }
+            .check-item { margin-bottom: 0.2rem; font-size: 9pt; }
+            .check-item input[type="checkbox"] {
+                width: 11px; height: 11px; min-width: 11px;
+                border-width: 1px;
+            }
+
+            .section-header { font-size: 11pt; margin-bottom: 0.2rem; }
+            .notes-row { gap: 0.4rem; }
+            .notes-box { padding: 0.4rem 0.55rem; }
+            .footer { margin-top: 0.4rem; }
+
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toolbar (hidden in print) -->
+    <div class="toolbar" role="banner">
+        <span class="toolbar-brand">Work Travel Guide <span class="toolbar-sep">|</span> Realistic Resources</span>
+        <div class="toolbar-actions">
+            <button onclick="clearProgress()" class="btn-tool btn-secondary" title="Clear all checkboxes and text">Clear</button>
+            <button onclick="window.print()" class="btn-tool btn-primary" title="Print or save as PDF">Save as PDF</button>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+
+        <!-- ======================== -->
+        <!-- PAGE 1: THE GUIDE        -->
+        <!-- ======================== -->
+        <div class="page">
+            <div class="header">
+                <div class="header-title">Essential Work Travel Guide</div>
+                <div class="header-script">What to Know</div>
+            </div>
+
+            <div class="hero-bar">
+                <h2>Pack for Function, Not Fear</h2>
+                <p>Work travel is stressful enough without worrying about what you forgot. This guide helps you show up prepared, comfortable, and ready to do your job well.</p>
+                <div class="hero-tagline">Take what works. Leave the rest.</div>
+            </div>
+
+            <div class="two-col">
+                <div class="card card-sage">
+                    <h3><span class="card-icon">&#127919;</span> Your Packing Philosophy</h3>
+                    <p>When deciding what to pack, prioritize items that:</p>
+                    <ul>
+                        <li>Prevent stress if something goes wrong</li>
+                        <li>Let you work from anywhere</li>
+                        <li>Help you look and feel put together with minimal effort</li>
+                    </ul>
+                    <p class="goal"><strong>Your goal:</strong> Show up ready to do your job well. Everything else is optional.</p>
+                </div>
+
+                <div class="card card-gold">
+                    <h3><span class="card-icon">&#128172;</span> Reminders</h3>
+                    <ol>
+                        <li>Check the weather in your destination.</li>
+                        <li>Give yourself time. Don't cut layovers or timelines tighter than needed.</li>
+                        <li>Comfort matters, but dress assuming your boss is on your flight.</li>
+                        <li>Plan for the worst case to ensure the best outcome.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="speech-bubble">
+                &#9993; You're not packing for vacation. You're packing to perform. Comfort = confidence.
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h3><span class="card-icon">&#128161;</span> Pro Tips</h3>
+                    <ul>
+                        <li><strong>Clothing:</strong> Choose wrinkle-resistant, mix-and-match pieces. Wear your bulkiest shoes on travel days.</li>
+                        <li><strong>Tech:</strong> Assume outlets will be inconvenient. Pack adapters and a portable charger in your carry-on.</li>
+                        <li><strong>Wellness:</strong> Bring personal care items with you to workshops or the office. Assume you won't go back to the hotel until after dinner.</li>
+                        <li><strong>Travel docs:</strong> Never check your essentials. Keep ID, meds, chargers, and one outfit in your carry-on.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><span class="card-icon">&#9998;</span> My Travel Notes</h3>
+                    <p style="font-size: 8pt; color: #7A89A6;">Jot down anything specific to this trip: dietary needs, key contacts, outfit plans, etc.</p>
+                    <div class="write-area">
+                        <textarea rows="6" placeholder="Write your notes here..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-left">Realistic Resources</div>
+                <div class="footer-center">Resources that meet you where you are</div>
+                <div class="footer-right">By Emma Scher | realistic-resources.com</div>
+            </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PAGE 2: THE CHECKLIST    -->
+        <!-- ======================== -->
+        <div class="page">
+            <div class="header">
+                <div class="header-title">Essential Work Travel Guide</div>
+                <div class="header-script">Packing Checklist</div>
+            </div>
+
+            <div class="two-col">
+                <!-- Travel Essentials -->
+                <div class="checklist-section">
+                    <div class="section-header"><span class="section-icon">&#9992;</span> Travel Essentials</div>
+                    <div class="section-subtitle">Never check these items!</div>
+                    <div class="checklist">
+                        <label class="check-item"><input type="checkbox"><span>License or passport</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Wallet</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Phone + portable battery pack</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Boarding pass (digital + screenshot)</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Hotel and meeting addresses saved offline</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Health insurance card</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Work credentials or access badges</span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add your own"></span></label>
+                    </div>
+                </div>
+
+                <!-- Work & Tech -->
+                <div class="checklist-section">
+                    <div class="section-header"><span class="section-icon">&#128187;</span> Work &amp; Tech</div>
+                    <div class="checklist">
+                        <label class="check-item"><input type="checkbox"><span>Laptop &amp; charger</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Phone &amp; charger</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Headphones</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Mouse</span></label>
+                        <label class="check-item"><input type="checkbox"><span>HDMI / USB-C adapters</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Watch + charger</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Portable charger</span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add your own"></span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clothing -->
+            <div class="checklist-section">
+                <div class="section-header"><span class="section-icon">&#128090;</span> Clothing</div>
+                <div class="checklist-two-col">
+                    <div class="checklist">
+                        <label class="check-item"><input type="checkbox"><span>1 outfit per workday + 1 backup</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Comfortable work shoes</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Backup shoes (weather/fatigue)</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Layers (office temps vary wildly)</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Belt and/or jewelry</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Socks</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Undergarments + 1 backup</span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add your own"></span></label>
+                    </div>
+                    <div class="checklist">
+                        <label class="check-item"><input type="checkbox"><span>1 outfit for drinks/dinner</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Sleepwear</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Travel outfit</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Comfortable walking shoes</span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add your own"></span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add your own"></span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health, Wellness & Personal Care -->
+            <div class="checklist-section">
+                <div class="section-header"><span class="section-icon">&#128138;</span> Health, Wellness &amp; Personal Care</div>
+                <div class="checklist-three-col">
+                    <div class="checklist">
+                        <label class="check-item"><input type="checkbox"><span>Medications</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Band-aids / blister care</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Hair products + brush</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Tampons / pads</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Hand sanitizer</span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add"></span></label>
+                    </div>
+                    <div class="checklist">
+                        <label class="check-item"><input type="checkbox"><span>Toothbrush &amp; toothpaste</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Face wash + moisturizer</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Sunscreen</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Makeup + remover (if used)</span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add"></span></label>
+                    </div>
+                    <div class="checklist">
+                        <label class="check-item"><input type="checkbox"><span>Water bottle</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Snacks</span></label>
+                        <label class="check-item"><input type="checkbox"><span>Caffeine or electrolyte packets</span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add"></span></label>
+                        <label class="check-item"><input type="checkbox"><span><input type="text" class="inline-input" placeholder="add"></span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom row: Don't Forget + Notes -->
+            <div class="notes-row">
+                <div class="notes-box">
+                    <div class="section-header"><span class="section-icon">&#9888;</span> Don't Forget</div>
+                    <textarea placeholder="Items specific to this trip..."></textarea>
+                </div>
+                <div class="notes-box">
+                    <div class="section-header"><span class="section-icon">&#128221;</span> Trip-Specific Notes</div>
+                    <textarea placeholder="Contacts, schedules, reminders..."></textarea>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-left">Realistic Resources</div>
+                <div class="footer-center">Resources that meet you where you are</div>
+                <div class="footer-right">By Emma Scher | realistic-resources.com</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var STORAGE_KEY = 'packing-guide-v1';
+
+        function saveProgress() {
+            try {
+                var data = {};
+                document.querySelectorAll('input[type="checkbox"]').forEach(function(cb, i) {
+                    data['cb_' + i] = cb.checked;
+                });
+                document.querySelectorAll('textarea').forEach(function(ta, i) {
+                    data['ta_' + i] = ta.value;
+                });
+                document.querySelectorAll('input[type="text"]').forEach(function(ti, i) {
+                    data['ti_' + i] = ti.value;
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            } catch(e) {}
+        }
+
+        function loadProgress() {
+            try {
+                var raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return;
+                var data = JSON.parse(raw);
+                document.querySelectorAll('input[type="checkbox"]').forEach(function(cb, i) {
+                    if (data['cb_' + i] !== undefined) cb.checked = data['cb_' + i];
+                });
+                document.querySelectorAll('textarea').forEach(function(ta, i) {
+                    if (data['ta_' + i] !== undefined) ta.value = data['ta_' + i];
+                });
+                document.querySelectorAll('input[type="text"]').forEach(function(ti, i) {
+                    if (data['ti_' + i] !== undefined) ti.value = data['ti_' + i];
+                });
+            } catch(e) {}
+        }
+
+        function clearProgress() {
+            if (!confirm('Clear all checkboxes and text? This cannot be undone.')) return;
+            document.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+            document.querySelectorAll('textarea').forEach(function(ta) { ta.value = ''; });
+            document.querySelectorAll('input[type="text"]').forEach(function(ti) { ti.value = ''; });
+            try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+        }
+
+        document.addEventListener('change', saveProgress);
+        document.addEventListener('input', saveProgress);
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>

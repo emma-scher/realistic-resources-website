@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://realistic-resources.com/sitemap.xml

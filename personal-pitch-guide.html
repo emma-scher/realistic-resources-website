@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Personal Pitch - Realistic Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0.5in 0.6in; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            color: #2E2E2E;
+            background: #ffffff;
+        }
+
+        /* ---- Toolbar ---- */
+        .toolbar {
+            background: #f0ebe9;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #D9C6B0;
+            font-size: 9pt;
+        }
+        .toolbar-brand {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11pt;
+            font-weight: 500;
+        }
+        .toolbar-sep { color: #D9C6B0; margin: 0 0.3rem; }
+        .toolbar-actions { display: flex; gap: 0.5rem; }
+        .btn-tool {
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .btn-tool:hover { opacity: 0.85; }
+        .btn-primary { background: #96ad90; color: #fff; }
+        .btn-secondary { background: transparent; border: 1px solid #D9C6B0; color: #828a70; }
+
+        /* ---- Layout ---- */
+        .content-wrap {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 3rem;
+        }
+        .page {
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #f0ebe9;
+        }
+        .page:last-child { border-bottom: none; margin-bottom: 0; }
+
+        /* ---- Cover header ---- */
+        .pdf-header {
+            border-bottom: 2px solid #96ad90;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .pdf-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 28pt;
+            font-weight: 600;
+            color: #2E2E2E;
+            letter-spacing: -0.02em;
+        }
+        .pdf-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 14pt;
+            color: #7A89A6;
+            margin-bottom: 0.15rem;
+        }
+        .pdf-meta {
+            font-size: 10pt;
+            color: #828a70;
+            margin-top: 0.15rem;
+            font-style: italic;
+        }
+
+        /* ---- Inner page headers ---- */
+        .page-header-inner {
+            border-bottom: 2px solid #96ad90;
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .page-header-inner h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 20pt;
+            font-weight: 500;
+            color: #2E2E2E;
+            margin: 0; border: none; padding: 0;
+        }
+        .page-header-inner .page-label {
+            font-family: 'Caveat', cursive;
+            font-size: 13pt;
+            color: #7A89A6;
+        }
+
+        /* ---- Typography ---- */
+        h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 14pt;
+            font-weight: 500;
+            color: #2E2E2E;
+            margin-top: 0.9rem;
+            margin-bottom: 0.35rem;
+            border-bottom: 1px solid #f0ebe9;
+            padding-bottom: 0.1rem;
+        }
+        h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 500;
+            color: #2E2E2E;
+            margin-top: 0.6rem;
+            margin-bottom: 0.25rem;
+        }
+        p { margin-bottom: 0.4rem; }
+        strong { font-weight: 500; }
+        em { color: #5a5a5a; font-style: italic; }
+
+        /* ---- Decorative ---- */
+        .divider {
+            text-align: center;
+            color: #96ad90;
+            font-size: 10pt;
+            margin: 0.6rem 0;
+            letter-spacing: 0.5em;
+        }
+        .take-what-works {
+            text-align: center;
+            background: #f0ebe9;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.9rem;
+            font-family: 'Caveat', cursive;
+            font-size: 12pt;
+            color: #828a70;
+        }
+
+        /* ---- Two-column boxes ---- */
+        .concept-columns {
+            display: flex;
+            gap: 0.75rem;
+            margin: 0.6rem 0;
+        }
+        .concept-col {
+            flex: 1;
+            background: #f0ebe9;
+            border-radius: 6px;
+            padding: 0.6rem 0.75rem;
+            page-break-inside: avoid;
+        }
+        .concept-col.col-do { border-top: 3px solid #96ad90; }
+        .concept-col.col-dont { border-top: 3px solid #D9C6B0; }
+        .concept-col h3 { margin-top: 0; font-size: 10.5pt; }
+        .concept-col ul { margin-left: 1rem; margin-bottom: 0; }
+        .concept-col li { margin-bottom: 0.15rem; font-size: 9pt; }
+        .concept-col ul li::marker { color: #96ad90; }
+        .concept-col.col-dont ul li::marker { color: #D9C6B0; }
+
+        /* ---- Callout boxes ---- */
+        .callout-sage {
+            background: #f0ebe9;
+            border-left: 4px solid #96ad90;
+            padding: 0.5rem 0.75rem;
+            margin: 0.6rem 0;
+            page-break-inside: avoid;
+            font-size: 9.5pt;
+        }
+        .callout-sage p { margin-bottom: 0; }
+        .callout-sage strong { color: #828a70; }
+
+        .callout-gold {
+            background: #F6F6E9;
+            border-left: 4px solid #E4A84A;
+            padding: 0.5rem 0.75rem;
+            margin: 0.6rem 0;
+            page-break-inside: avoid;
+            font-size: 9pt;
+        }
+        .callout-gold h3 { margin-top: 0; font-size: 9.5pt; }
+        .callout-gold p { margin-bottom: 0; }
+
+        /* ---- Reality callout ---- */
+        .reality-box {
+            background: #f0ebe9;
+            border-radius: 8px;
+            padding: 0.65rem 0.85rem;
+            margin: 0.6rem 0;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+        .reality-box p {
+            font-size: 9.5pt;
+            margin-bottom: 0.2rem;
+        }
+        .reality-box p:last-child { margin-bottom: 0; }
+        .reality-box strong { color: #828a70; }
+
+        /* ---- Speech bubble ---- */
+        .speech-bubble {
+            background: #f0ebe9;
+            border-radius: 12px;
+            padding: 0.4rem 0.75rem;
+            font-family: 'Caveat', cursive;
+            font-size: 12pt;
+            color: #828a70;
+            text-align: center;
+            position: relative;
+            margin: 0.6rem 0;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #f0ebe9;
+        }
+
+        /* ---- Framework steps ---- */
+        .fw-step {
+            margin-bottom: 0.75rem;
+            page-break-inside: avoid;
+        }
+        .fw-step-header {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 600;
+            color: #828a70;
+            margin-bottom: 0.15rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .fw-num {
+            background: #96ad90;
+            color: #fff;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 9pt;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .fw-step p { font-size: 9.5pt; }
+        .fw-example {
+            background: rgba(150, 173, 144, 0.06);
+            border: 1px solid #96ad90;
+            border-radius: 6px;
+            padding: 0.4rem 0.65rem;
+            margin-top: 0.25rem;
+            font-size: 9.5pt;
+        }
+        .fw-example .ex-label {
+            font-size: 7.5pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #828a70;
+            margin-bottom: 0.1rem;
+        }
+        .fw-example p { margin-bottom: 0; font-style: italic; color: #2E2E2E; }
+
+        /* ---- Assembled pitch ---- */
+        .assembled {
+            background: #f0ebe9;
+            border-radius: 8px;
+            padding: 0.65rem 0.85rem;
+            margin: 0.75rem 0;
+            page-break-inside: avoid;
+        }
+        .assembled h3 {
+            margin-top: 0;
+            font-size: 11pt;
+            margin-bottom: 0.25rem;
+        }
+        .assembled p { font-size: 9.5pt; margin-bottom: 0; line-height: 1.6; }
+        .part-tag {
+            display: inline-block;
+            font-size: 7pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background: #96ad90;
+            color: #fff;
+            padding: 0.05rem 0.3rem;
+            border-radius: 2px;
+            vertical-align: middle;
+            margin-right: 0.1rem;
+        }
+
+        /* ---- Script cards ---- */
+        .scripts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        .script-card {
+            background: #f0ebe9;
+            border-radius: 8px;
+            padding: 0.55rem 0.7rem;
+            page-break-inside: avoid;
+        }
+        .script-tag {
+            display: inline-block;
+            font-size: 7pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            margin-bottom: 0.2rem;
+        }
+        .tag-college { background: #96ad90; color: #fff; }
+        .tag-professional { background: #828a70; color: #fff; }
+        .tag-social { background: #E4A84A; color: #fff; }
+        .tag-parent { background: #7A89A6; color: #fff; }
+        .tag-leader { background: #2E2E2E; color: #fff; }
+        .tag-community { background: #D9C6B0; color: #2E2E2E; }
+        .script-card p {
+            font-size: 9pt;
+            font-style: italic;
+            margin-bottom: 0;
+            line-height: 1.45;
+        }
+
+        /* ---- If they ask ---- */
+        .response-list {
+            list-style: none;
+            margin: 0.4rem 0 0.5rem;
+        }
+        .response-list li {
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.3rem;
+            font-size: 9.5pt;
+        }
+        .response-list li::before {
+            content: '\2192';
+            position: absolute;
+            left: 0;
+            color: #96ad90;
+            font-weight: 600;
+        }
+
+        /* ---- Numbered tips ---- */
+        .tip-item {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+            page-break-inside: avoid;
+        }
+        .tip-num {
+            background: #f0ebe9;
+            color: #828a70;
+            width: 22px; height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11pt;
+            font-weight: 600;
+            margin-top: 0.05rem;
+        }
+        .tip-content h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11pt;
+            font-weight: 600;
+            color: #2E2E2E;
+            margin-bottom: 0.1rem;
+        }
+        .tip-content p { font-size: 9pt; margin-bottom: 0; }
+
+        /* ---- Workspace ---- */
+        .workspace {
+            background: rgba(150, 173, 144, 0.04);
+            border: 2px solid #96ad90;
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            margin: 0.75rem 0;
+        }
+        .workspace h3 {
+            margin-top: 0;
+            font-size: 13pt;
+            color: #828a70;
+            margin-bottom: 0.15rem;
+        }
+        .workspace > p {
+            font-size: 9pt;
+            color: #7A89A6;
+            margin-bottom: 0.5rem;
+        }
+        .ws-field { margin-bottom: 0.5rem; }
+        .ws-field:last-child { margin-bottom: 0; }
+        .ws-label {
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: #828a70;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.15rem;
+        }
+        .ws-field input[type="text"] {
+            width: 100%;
+            border: 1px solid #D9C6B0;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.7);
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            padding: 0.35rem 0.5rem;
+            outline: none;
+        }
+        .ws-field input[type="text"]:focus { border-color: #96ad90; }
+        .ws-field textarea {
+            width: 100%;
+            border: 1px solid #D9C6B0;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.7);
+            font-family: 'Inter', sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.6;
+            padding: 0.35rem 0.5rem;
+            resize: vertical;
+            outline: none;
+            min-height: 3.5rem;
+        }
+        .ws-field textarea:focus { border-color: #96ad90; }
+        .ws-field textarea::placeholder,
+        .ws-field input::placeholder { color: #b5b5b5; font-style: italic; }
+
+        /* ---- The Shift (closing) ---- */
+        .shift-box {
+            background: #f0ebe9;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin: 0.75rem 0;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+        .shift-box p {
+            font-size: 9.5pt;
+            margin-bottom: 0.3rem;
+        }
+        .shift-box p:last-child { margin-bottom: 0; }
+        .shift-box .closer {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 14pt;
+            font-weight: 600;
+            color: #828a70;
+            margin-top: 0.35rem;
+        }
+
+        /* ---- Footer ---- */
+        .pdf-footer {
+            padding-top: 0.4rem;
+            border-top: 1px solid #f0ebe9;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .pdf-footer p {
+            font-size: 7.5pt;
+            color: #7A89A6;
+            margin-bottom: 0.1rem;
+        }
+        .footer-logo {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 9pt;
+            font-weight: 500;
+            color: #2E2E2E;
+        }
+
+        /* ============ PRINT ============ */
+        @media print {
+            body { background: #fff; font-size: 9.5pt; }
+            .toolbar { display: none !important; }
+            .content-wrap { max-width: none; margin: 0; padding: 0; }
+
+            .page {
+                page-break-after: always;
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: none;
+            }
+            .page:last-child { page-break-after: auto; }
+
+            h2 { font-size: 13pt; margin-top: 0.6rem; margin-bottom: 0.25rem; }
+            h3 { font-size: 11pt; margin-top: 0.4rem; }
+            p { margin-bottom: 0.3rem; }
+
+            .pdf-header { margin-bottom: 0.75rem; }
+            .pdf-title { font-size: 26pt; }
+            .take-what-works { padding: 0.35rem 0.75rem; margin-bottom: 0.6rem; font-size: 11pt; }
+
+            .concept-columns { gap: 0.5rem; margin: 0.4rem 0; }
+            .concept-col { padding: 0.4rem 0.6rem; }
+            .concept-col li { font-size: 8.5pt; }
+
+            .callout-sage { padding: 0.4rem 0.6rem; margin: 0.4rem 0; font-size: 9pt; }
+            .callout-gold { padding: 0.4rem 0.6rem; margin: 0.4rem 0; font-size: 8.5pt; }
+            .reality-box { padding: 0.5rem 0.7rem; margin: 0.4rem 0; }
+            .reality-box p { font-size: 9pt; }
+
+            .speech-bubble { font-size: 11pt; padding: 0.3rem 0.6rem; margin: 0.4rem 0; }
+
+            .fw-step { margin-bottom: 0.5rem; }
+            .fw-step p { font-size: 9pt; }
+            .fw-example { padding: 0.3rem 0.5rem; font-size: 9pt; }
+            .assembled { padding: 0.5rem 0.7rem; margin: 0.5rem 0; }
+            .assembled p { font-size: 9pt; }
+
+            .scripts-grid { gap: 0.35rem; margin: 0.35rem 0; }
+            .script-card { padding: 0.4rem 0.55rem; }
+            .script-card p { font-size: 8.5pt; }
+            .script-tag { font-size: 6.5pt; }
+
+            .response-list li { font-size: 9pt; margin-bottom: 0.2rem; }
+
+            .tip-item { margin-bottom: 0.4rem; }
+            .tip-content p { font-size: 8.5pt; }
+
+            .workspace { padding: 0.6rem 0.75rem; margin: 0.5rem 0; }
+            .workspace > p { font-size: 8.5pt; }
+            .ws-field input[type="text"] {
+                border: none;
+                border-bottom: 1px solid #D9C6B0;
+                border-radius: 0;
+                background: transparent;
+                padding: 0.15rem 0;
+                font-size: 9pt;
+            }
+            .ws-field textarea {
+                border: none;
+                border-radius: 0;
+                background: transparent;
+                resize: none;
+                padding: 0;
+                min-height: auto;
+                height: 2rem;
+                font-size: 9pt;
+                line-height: 1rem;
+                background-image: repeating-linear-gradient(
+                    to bottom,
+                    transparent,
+                    transparent calc(1rem - 1px),
+                    #D9C6B0 calc(1rem - 1px),
+                    #D9C6B0 1rem
+                );
+            }
+
+            .shift-box { padding: 0.5rem 0.75rem; margin: 0.5rem 0; }
+            .shift-box p { font-size: 9pt; }
+            .shift-box .closer { font-size: 12pt; }
+
+            .divider { margin: 0.35rem 0; }
+            .pdf-footer { margin-top: 0.5rem; }
+
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar" role="banner">
+        <span class="toolbar-brand">Personal Pitch Guide <span class="toolbar-sep">|</span> Realistic Resources</span>
+        <div class="toolbar-actions">
+            <button onclick="clearProgress()" class="btn-tool btn-secondary">Clear</button>
+            <button onclick="window.print()" class="btn-tool btn-primary">Save as PDF</button>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+
+        <!-- ======================== -->
+        <!-- PAGE 1: COVER + FRAMING -->
+        <!-- ======================== -->
+        <section class="page">
+            <div class="pdf-header">
+                <div class="pdf-subtitle">A framework from Realistic Resources</div>
+                <h1 class="pdf-title">Build Your Personal Pitch</h1>
+                <div class="pdf-meta">How to introduce your disability with clarity and confidence</div>
+            </div>
+
+            <div class="take-what-works">
+                &#10043; Take what works. Leave the rest. Make it yours. &#10043;
+            </div>
+
+            <div class="content-section">
+                <h2>Who This Is For</h2>
+                <p>This framework is for people who want to talk about their disability on their own terms and build connection, not pity. Whether you're starting college, beginning a new job, joining a community group, or just meeting new people, this helps you introduce your disability without it being weird.</p>
+            </div>
+
+            <div class="concept-columns">
+                <div class="concept-col col-do">
+                    <h3>&#10003; Use this when:</h3>
+                    <ul>
+                        <li>Meeting new people in social or community settings</li>
+                        <li>Starting something new (school, job, team)</li>
+                        <li>Networking or professional events</li>
+                        <li>Practicing before higher-stakes conversations</li>
+                    </ul>
+                </div>
+                <div class="concept-col col-dont">
+                    <h3>&#10005; Don't use this when:</h3>
+                    <ul>
+                        <li>Requesting official accommodations (different legal process)</li>
+                        <li>You're facing active discrimination (you need advocacy support)</li>
+                        <li>You simply don't want to share (you never owe anyone an explanation)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout-gold">
+                <h3>&#128161; A note on visibility</h3>
+                <p>Whether your disability is visible or not, this framework adapts. For invisible disabilities, you control when and if you disclose. This is about choosing to share on your terms.</p>
+            </div>
+
+            <div class="reality-box">
+                <p>Most people don't know how to interact with disabled people. They're afraid of saying the wrong thing.</p>
+                <p>Your pitch gives them something to work with. When you show up with confidence and clarity, you guide the conversation. <strong>You're showing them how.</strong></p>
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>By Emma Scher | realistic-resources.com</p>
+            </div>
+        </section>
+
+        <!-- ======================== -->
+        <!-- PAGE 2: THE FRAMEWORK   -->
+        <!-- ======================== -->
+        <section class="page">
+            <div class="page-header-inner">
+                <h2 style="border:none; margin:0; padding:0;">The 3-Part Framework</h2>
+                <span class="page-label">Personal Pitch</span>
+            </div>
+
+            <p style="font-size: 9.5pt; margin-bottom: 0.5rem;">This isn't a script. It's a structure you adapt to the moment.</p>
+
+            <div class="fw-step">
+                <div class="fw-step-header"><span class="fw-num">1</span> Start With Your Name</div>
+                <p>Ground the conversation with confidence. Names are powerful. They signal "I'm here, and I'm owning this."</p>
+                <div class="fw-example">
+                    <div class="ex-label">Example</div>
+                    <p>"Hi, I'm Emma."</p>
+                </div>
+            </div>
+
+            <div class="fw-step">
+                <div class="fw-step-header"><span class="fw-num">2</span> Share a Tailored Background</div>
+                <p>Just 1-2 sentences that fit the room. Pick whatever's relevant: your work, your interests, your expertise. You're not giving your full resume. You're giving them something to connect with.</p>
+                <div class="fw-example">
+                    <div class="ex-label">Example</div>
+                    <p>"I'm an AI consultant with a background in culinary arts."</p>
+                </div>
+            </div>
+
+            <div class="fw-step">
+                <div class="fw-step-header"><span class="fw-num">3</span> Introduce Your Disability</div>
+                <p>Name it. Briefly explain what it means (1-2 sentences, about 30 seconds). Then connect it to a strength.</p>
+                <div class="fw-example">
+                    <div class="ex-label">Example</div>
+                    <p>"I have Ehlers-Danlos Syndrome, which affects my joints and energy levels. It's one reason I've become an expert planner. It helps me stay safe and succeed."</p>
+                </div>
+            </div>
+
+            <div class="assembled">
+                <h3>&#127919; Putting It All Together</h3>
+                <p><span class="part-tag">1</span> "Hi, I'm Emma. <span class="part-tag">2</span> I'm an AI consultant with a background in culinary arts. <span class="part-tag">3</span> I have Ehlers-Danlos Syndrome, which affects my joints and energy levels. It's one reason I've become an expert planner. It helps me stay safe and succeed."</p>
+            </div>
+
+            <div class="speech-bubble">
+                This isn't about asking for help or pity. It's about building trust, respect, and connection.
+            </div>
+
+            <div class="callout-gold">
+                <h3>&#128161; The goal</h3>
+                <p>Name it factually. Explain it briefly. Connect it to a strength. That's it. Under 30 seconds.</p>
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>realistic-resources.com</p>
+            </div>
+        </section>
+
+        <!-- ======================== -->
+        <!-- PAGE 3: SAMPLE SCRIPTS  -->
+        <!-- ======================== -->
+        <section class="page">
+            <div class="page-header-inner">
+                <h2 style="border:none; margin:0; padding:0;">Sample Scripts</h2>
+                <span class="page-label">Personal Pitch</span>
+            </div>
+
+            <p style="font-size: 9.5pt; margin-bottom: 0.3rem;">These are examples, not word-for-word scripts. Use your own voice.</p>
+
+            <div class="scripts-grid">
+                <div class="script-card">
+                    <div class="script-tag tag-college">College / New Environment</div>
+                    <p>"Hi, I'm Alex. I'm studying psychology. I have ADHD, which means I process information differently. I've gotten really good at creating systems that help me stay organized and focused."</p>
+                </div>
+                <div class="script-card">
+                    <div class="script-tag tag-professional">Professional / Networking</div>
+                    <p>"I'm Jordan, I work in marketing. I have rheumatoid arthritis that affects my hands and energy. It's made me excellent at delegation and strategic planning."</p>
+                </div>
+                <div class="script-card">
+                    <div class="script-tag tag-social">Social / Community</div>
+                    <p>"Hey, I'm Sam. I'm into photography and hiking. I have a visual impairment, so sometimes I need a heads up about obstacles. I'm always up for outdoor adventures though."</p>
+                </div>
+                <div class="script-card">
+                    <div class="script-tag tag-parent">Parent / Caregiver</div>
+                    <p>"I'm Casey, Maya's parent. I have multiple sclerosis, which sometimes affects my mobility and fatigue. I've learned to plan ahead and communicate what I need to stay involved."</p>
+                </div>
+                <div class="script-card">
+                    <div class="script-tag tag-leader">Leadership / Established</div>
+                    <p>"I'm Dr. Rivera, I lead the research team. I'm deaf and use ASL and lip reading. It's shaped how I think about accessible communication, which makes our team stronger."</p>
+                </div>
+                <div class="script-card">
+                    <div class="script-tag tag-community">Later Life / Community</div>
+                    <p>"I'm Pat. I volunteer at the food bank on Tuesdays. I acquired a spinal cord injury a few years ago and use a wheelchair. I've learned a lot about adaptability and asking for what I need."</p>
+                </div>
+            </div>
+
+            <div class="content-section" style="margin-top: 0.5rem;">
+                <h3>&#128172; If They Ask Questions</h3>
+                <ul class="response-list">
+                    <li>You get to decide which questions you answer</li>
+                    <li>Thoughtful questions can build trust and connection</li>
+                    <li>Over time, showing up as yourself gives others permission to do the same</li>
+                    <li>Not every response will be perfect. That's okay.</li>
+                </ul>
+            </div>
+
+            <div class="speech-bubble">
+                You're not rehearsing a defense. You're practicing an introduction.
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>realistic-resources.com</p>
+            </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- PAGE 4: TIPS + BUILD YOUR OWN   -->
+        <!-- ================================ -->
+        <section class="page">
+            <div class="page-header-inner">
+                <h2 style="border:none; margin:0; padding:0;">Make It Yours</h2>
+                <span class="page-label">Personal Pitch</span>
+            </div>
+
+            <div class="tip-item">
+                <span class="tip-num">1</span>
+                <div class="tip-content">
+                    <h4>Know why you're telling them</h4>
+                    <p>Is it for connection? Support? Setting expectations? Each calls for a slightly different tone.</p>
+                </div>
+            </div>
+            <div class="tip-item">
+                <span class="tip-num">2</span>
+                <div class="tip-content">
+                    <h4>They don't need to understand everything</h4>
+                    <p>Give them the basics they need to relate to you. Think: what helps them engage with you, not a medical education.</p>
+                </div>
+            </div>
+            <div class="tip-item">
+                <span class="tip-num">3</span>
+                <div class="tip-content">
+                    <h4>Highlight what your disability has taught you</h4>
+                    <p>This isn't just a challenge. It's a source of growth: strategy, empathy, organization, resilience, creativity.</p>
+                </div>
+            </div>
+            <div class="tip-item">
+                <span class="tip-num">4</span>
+                <div class="tip-content">
+                    <h4>Start in low-stakes settings</h4>
+                    <p>Practice with trusted friends, social events, or peers you're comfortable with. Build confidence before big moments.</p>
+                </div>
+            </div>
+            <div class="tip-item">
+                <span class="tip-num">5</span>
+                <div class="tip-content">
+                    <h4>Adapt to your context</h4>
+                    <p>One-on-one? Use the full framework. Group setting? Introduce yourself normally, then follow up individually. Virtual? Same framework applies.</p>
+                </div>
+            </div>
+
+            <div class="divider">&#10045; &nbsp; &#10045; &nbsp; &#10045;</div>
+
+            <div class="workspace">
+                <h3>&#9998; Build Your Pitch</h3>
+                <p>Use the 3-part framework to draft your own. Start messy, refine later.</p>
+                <div class="ws-field">
+                    <div class="ws-label">Part 1: Your name</div>
+                    <input type="text" placeholder="Hi, I'm...">
+                </div>
+                <div class="ws-field">
+                    <div class="ws-label">Part 2: Your background (1-2 sentences that fit the room)</div>
+                    <textarea rows="2" placeholder="What you do, what you're into, what brings you here..."></textarea>
+                </div>
+                <div class="ws-field">
+                    <div class="ws-label">Part 3: Your disability (name it, explain briefly, connect to a strength)</div>
+                    <textarea rows="3" placeholder="I have _____, which means _____. It's taught me / made me good at _____..."></textarea>
+                </div>
+            </div>
+
+            <div class="shift-box">
+                <p>When you give people a clear, confident way to understand you, they relax. The awkwardness fades. They stop worrying about saying the wrong thing because you've already shown them how to engage with you.</p>
+                <p>You're carrying the experience of navigating the world with your disability everywhere you go. That's not something to hide. That's something that's shaped who you are, how you think, how you solve problems.</p>
+                <p class="closer">You're not walking away from who you are. You're bringing all of it forward.</p>
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>By Emma Scher | realistic-resources.com</p>
+                <p style="font-family: 'Caveat', cursive; font-size: 10pt; color: #828a70;">Resources that meet you where you are</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        var STORAGE_KEY = 'personal-pitch-v1';
+
+        function saveProgress() {
+            try {
+                var data = {};
+                document.querySelectorAll('textarea').forEach(function(ta, i) {
+                    data['ta_' + i] = ta.value;
+                });
+                document.querySelectorAll('input[type="text"]').forEach(function(ti, i) {
+                    data['ti_' + i] = ti.value;
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            } catch(e) {}
+        }
+
+        function loadProgress() {
+            try {
+                var raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return;
+                var data = JSON.parse(raw);
+                document.querySelectorAll('textarea').forEach(function(ta, i) {
+                    if (data['ta_' + i] !== undefined) ta.value = data['ta_' + i];
+                });
+                document.querySelectorAll('input[type="text"]').forEach(function(ti, i) {
+                    if (data['ti_' + i] !== undefined) ti.value = data['ti_' + i];
+                });
+            } catch(e) {}
+        }
+
+        function clearProgress() {
+            if (!confirm('Clear all your responses? This cannot be undone.')) return;
+            document.querySelectorAll('textarea').forEach(function(ta) { ta.value = ''; });
+            document.querySelectorAll('input[type="text"]').forEach(function(ti) { ti.value = ''; });
+            try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+        }
+
+        document.addEventListener('change', saveProgress);
+        document.addEventListener('input', saveProgress);
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>

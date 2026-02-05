@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Smart Sous Chef - Realistic Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0.5in 0.6in; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10pt;
+            line-height: 1.6;
+            color: #2E2E2E;
+            background: #ffffff;
+        }
+
+        /* ---- Toolbar ---- */
+        .toolbar {
+            background: #f0ebe9;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #D9C6B0;
+            font-size: 9pt;
+        }
+        .toolbar-brand {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11pt;
+            font-weight: 500;
+        }
+        .toolbar-sep { color: #D9C6B0; margin: 0 0.3rem; }
+        .btn-tool {
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 500;
+            background: #96ad90;
+            color: #fff;
+            transition: opacity 0.2s;
+        }
+        .btn-tool:hover { opacity: 0.85; }
+
+        /* ---- Layout ---- */
+        .content-wrap {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 3rem;
+        }
+        .page {
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #f0ebe9;
+        }
+        .page:last-child { border-bottom: none; margin-bottom: 0; }
+
+        /* ---- Cover header ---- */
+        .pdf-header {
+            border-bottom: 2px solid #96ad90;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .pdf-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 28pt;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .pdf-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 14pt;
+            color: #7A89A6;
+            margin-bottom: 0.15rem;
+        }
+        .pdf-meta {
+            font-size: 10pt;
+            color: #828a70;
+            margin-top: 0.15rem;
+            font-style: italic;
+        }
+
+        /* ---- Inner page headers ---- */
+        .page-header-inner {
+            border-bottom: 2px solid #96ad90;
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .page-header-inner h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 20pt;
+            font-weight: 500;
+            margin: 0; border: none; padding: 0;
+        }
+        .page-header-inner .page-label {
+            font-family: 'Caveat', cursive;
+            font-size: 13pt;
+            color: #7A89A6;
+        }
+
+        /* ---- Typography ---- */
+        h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 14pt;
+            font-weight: 500;
+            margin-top: 0.9rem;
+            margin-bottom: 0.35rem;
+            border-bottom: 1px solid #f0ebe9;
+            padding-bottom: 0.1rem;
+        }
+        h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 500;
+            margin-top: 0.6rem;
+            margin-bottom: 0.25rem;
+        }
+        p { margin-bottom: 0.5rem; }
+        strong { font-weight: 500; }
+
+        /* ---- Intro box ---- */
+        .intro-box {
+            background: #f0ebe9;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+        }
+        .intro-box p { font-size: 10pt; margin-bottom: 0.3rem; }
+        .intro-box p:last-child { margin-bottom: 0; }
+        .intro-box strong { color: #828a70; }
+
+        /* ---- Steps ---- */
+        .how-to { margin: 0.75rem 0; }
+        .how-step {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            align-items: flex-start;
+        }
+        .how-num {
+            background: #96ad90;
+            color: #fff;
+            width: 22px; height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9pt;
+            font-weight: 700;
+            margin-top: 0.1rem;
+        }
+        .how-step p { margin-bottom: 0; font-size: 10pt; }
+
+        /* ---- Prompt block ---- */
+        .prompt-block {
+            border: 1px solid #D9C6B0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0.75rem 0;
+        }
+        .prompt-header {
+            background: #96ad90;
+            padding: 0.45rem 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .prompt-label {
+            color: #fff;
+            font-weight: 600;
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .copy-btn {
+            background: #fff;
+            color: #828a70;
+            border: none;
+            border-radius: 4px;
+            padding: 0.25rem 0.7rem;
+            font-size: 8.5pt;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover { background: #f0ebe9; }
+        .copy-btn.copied {
+            background: #96ad90 !important;
+            color: #fff !important;
+        }
+        .prompt-text {
+            background: #faf9f8;
+            padding: 0.75rem 1rem;
+            font-size: 9pt;
+            line-height: 1.65;
+            white-space: pre-wrap;
+            font-family: 'Inter', sans-serif;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* ---- Rescue block ---- */
+        .rescue-block {
+            border: 2px solid #E4A84A;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0.75rem 0;
+        }
+        .rescue-header {
+            background: #E4A84A;
+            padding: 0.45rem 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rescue-header .prompt-label { color: #fff; }
+
+        /* ---- Phase cards ---- */
+        .phase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin: 0.6rem 0;
+        }
+        .phase-card {
+            background: #f0ebe9;
+            border-radius: 6px;
+            padding: 0.5rem 0.65rem;
+        }
+        .phase-tag {
+            display: inline-block;
+            font-size: 7pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background: #96ad90;
+            color: #fff;
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            margin-bottom: 0.15rem;
+        }
+        .phase-card h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11pt;
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+        .phase-card p { font-size: 8.5pt; margin-bottom: 0; color: #5a5a5a; }
+
+        /* ---- Callout ---- */
+        .callout-gold {
+            background: #F6F6E9;
+            border-left: 4px solid #E4A84A;
+            padding: 0.5rem 0.75rem;
+            margin: 0.6rem 0;
+            font-size: 9pt;
+        }
+        .callout-gold h3 { margin-top: 0; font-size: 9.5pt; }
+        .callout-gold p { margin-bottom: 0; }
+
+        .callout-sage {
+            background: #f0ebe9;
+            border-left: 4px solid #96ad90;
+            padding: 0.5rem 0.75rem;
+            margin: 0.6rem 0;
+            font-size: 9.5pt;
+        }
+        .callout-sage p { margin-bottom: 0; }
+
+        /* ---- Speech bubble ---- */
+        .speech-bubble {
+            background: #f0ebe9;
+            border-radius: 12px;
+            padding: 0.4rem 0.75rem;
+            font-family: 'Caveat', cursive;
+            font-size: 12pt;
+            color: #828a70;
+            text-align: center;
+            position: relative;
+            margin: 0.6rem 0;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #f0ebe9;
+        }
+
+        /* ---- Tips list ---- */
+        .tips-list { margin: 0.5rem 0; }
+        .tip-row {
+            display: flex;
+            gap: 0.4rem;
+            margin-bottom: 0.4rem;
+            align-items: flex-start;
+            font-size: 9.5pt;
+        }
+        .tip-icon {
+            color: #96ad90;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.05rem;
+        }
+
+        /* ---- Works with badges ---- */
+        .works-with {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin: 0.5rem 0;
+        }
+        .badge {
+            background: #f0ebe9;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            font-weight: 500;
+            color: #2E2E2E;
+        }
+
+        /* ---- Footer ---- */
+        .pdf-footer {
+            padding-top: 0.4rem;
+            border-top: 1px solid #f0ebe9;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .pdf-footer p {
+            font-size: 7.5pt;
+            color: #7A89A6;
+            margin-bottom: 0.1rem;
+        }
+        .footer-logo {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 9pt;
+            font-weight: 500;
+            color: #2E2E2E;
+        }
+
+        /* ============ PRINT ============ */
+        @media print {
+            body { background: #fff; font-size: 9.5pt; }
+            .toolbar { display: none !important; }
+            .content-wrap { max-width: none; margin: 0; padding: 0; }
+            .page {
+                page-break-after: always;
+                padding-bottom: 0; margin-bottom: 0; border-bottom: none;
+            }
+            .page:last-child { page-break-after: auto; }
+            .prompt-text { max-height: none; overflow: visible; font-size: 8pt; line-height: 1.5; }
+            .copy-btn { display: none; }
+            .pdf-header { margin-bottom: 0.75rem; }
+            .pdf-title { font-size: 24pt; }
+            .phase-grid { gap: 0.35rem; }
+            .phase-card { padding: 0.4rem 0.5rem; }
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar" role="banner">
+        <span class="toolbar-brand">Smart Sous Chef <span class="toolbar-sep">|</span> Realistic Resources</span>
+        <button onclick="window.print()" class="btn-tool">Save as PDF</button>
+    </div>
+
+    <div class="content-wrap">
+
+        <!-- ======================== -->
+        <!-- PAGE 1: COVER + PROMPT  -->
+        <!-- ======================== -->
+        <section class="page">
+            <div class="pdf-header">
+                <div class="pdf-subtitle">An AI-powered tool from Realistic Resources</div>
+                <h1 class="pdf-title">The Smart Sous Chef</h1>
+                <div class="pdf-meta">Your low-stress hosting strategy, powered by AI</div>
+            </div>
+
+            <div class="intro-box">
+                <p>This tool turns AI into your professional sous chef. It handles the math, the scheduling, and the logistics so you can focus on the food.</p>
+                <p><strong>New to AI?</strong> You don't need to be a "tech person" to use this. Just copy the text below, paste it into a chat, and talk to it like a friend.</p>
+            </div>
+
+            <h2>How to Use This</h2>
+            <div class="how-to">
+                <div class="how-step">
+                    <span class="how-num">1</span>
+                    <p><strong>Open a new chat</strong> in any AI tool:</p>
+                </div>
+                <div class="works-with" style="margin-left: 2rem; margin-top: -0.3rem;">
+                    <span class="badge">ChatGPT</span>
+                    <span class="badge">Claude</span>
+                    <span class="badge">Gemini</span>
+                </div>
+                <div class="how-step">
+                    <span class="how-num">2</span>
+                    <p><strong>Copy the prompt below</strong> and paste it into the chat.</p>
+                </div>
+                <div class="how-step">
+                    <span class="how-num">3</span>
+                    <p><strong>That's it.</strong> The AI will guide you through the rest, step by step.</p>
+                </div>
+            </div>
+
+            <div class="prompt-block">
+                <div class="prompt-header">
+                    <span class="prompt-label">The Main Prompt - Copy &amp; Paste into AI</span>
+                    <button class="copy-btn" onclick="copyPrompt('main-prompt', this)">Copy</button>
+                </div>
+                <div class="prompt-text" id="main-prompt">Act as my Smart Sous Chef. You are a supportive, hyper-organized, and detail-oriented kitchen expert with 10+ years of professional experience.
+
+Your Goal: Help me plan, shop for, and execute a meal event without stress.
+
+Your Rules:
+- Reputable Sources Only: If I ask for advice on food safety or techniques, only use data from reputable sources (like the FDA or established culinary institutes).
+- Clarify First: If my instructions are vague, ask clarifying questions before guessing.
+- Format: Use bullet points for all lists. Do not use tables unless I ask for one.
+- Tone: Friendly, encouraging, and clear.
+- Safety Disclaimer: Always include a brief reminder that you are an AI and that I should manually double-check crucial allergy information and meat temperatures.
+
+The Protocol: Please guide me through the following phases. Do not output all phases at once. Stop and wait for my input after every phase.
+
+PHASE 0: THE GOAL
+Before we start planning, say hello and ask: "What do you need help with today?" Offer these options (I can pick one or more):
+A) Shopping List
+B) Cooking Timeline (Run-of-Show)
+C) Kitchen Logic Check (Oven conflicts/risks)
+D) All of the above
+
+PHASE 1: THE INTAKE
+Ask me these questions one by one. Keep the tone friendly and low-pressure.
+- The Scope: How many recipes are we working with? How many guests are we feeding?
+- The Menu: Ask me to share my recipes. Tell me I can paste text, upload photos, or links.
+- The Details: Are there any allergies, dietary restrictions, or kitchen limitations (e.g., only one oven)?
+- Timing (Conditional): Only ask this if I chose Option B or D in Phase 0: What is your target serving time?
+
+PHASE 2: THE RECIPE CHECK (Crucial Step)
+Once I have provided the recipes, you must confirm you can read them.
+- List every single dish you have identified.
+- Verification: explicitly state: "I have the full ingredients and instructions for [Dish Name]."
+- If a link is unreadable or a photo is blurry, stop and tell me immediately. Do not hallucinate or guess ingredients.
+
+PHASE 3: THE DELIVERABLES
+Now, execute the goal(s) I selected in Phase 0.
+
+If I chose Kitchen Logic Check:
+- Compare oven temps and times. Check ingredients against restrictions.
+- Output: Report conflicts or risks clearly.
+
+If I chose Shopping List:
+- Iterate through every verified dish. List all ingredients. Combine duplicates (e.g. 2 onions + 1 onion = 3 onions). Sort by aisle.
+- Output: A clean, consolidated bulleted list.
+
+If I chose Cooking Timeline:
+- Start at Serving Time. Work backward based on prep + cook time.
+- Output: A schedule split into "Prep Day" (do ahead) and "Event Day" (live cooking).
+
+Start now by delivering Phase 0.</div>
+            </div>
+
+            <div class="speech-bubble">
+                Built by a former professional chef. Tested on real dinner parties.
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>By Emma Scher | realistic-resources.com</p>
+            </div>
+        </section>
+
+        <!-- ============================ -->
+        <!-- PAGE 2: PHASES + RESCUE      -->
+        <!-- ============================ -->
+        <section class="page">
+            <div class="page-header-inner">
+                <h2 style="border:none; margin:0; padding:0;">What to Expect</h2>
+                <span class="page-label">Smart Sous Chef</span>
+            </div>
+
+            <p style="font-size: 9.5pt; margin-bottom: 0.5rem;">Once you paste the prompt, the AI walks you through four phases. It won't dump everything at once. It stops and waits for your input at each step.</p>
+
+            <div class="phase-grid">
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 0</div>
+                    <h4>The Goal</h4>
+                    <p>The AI asks what you need: a shopping list, cooking timeline, kitchen logic check, or all three.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 1</div>
+                    <h4>The Intake</h4>
+                    <p>It asks about your guest count, recipes, allergies, dietary needs, and serving time. One question at a time.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 2</div>
+                    <h4>The Recipe Check</h4>
+                    <p>It confirms it can read every recipe you shared. If something's unclear, it tells you instead of guessing.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 3</div>
+                    <h4>The Deliverables</h4>
+                    <p>It delivers exactly what you asked for: consolidated shopping lists, prep-day vs. event-day timelines, or conflict reports.</p>
+                </div>
+            </div>
+
+            <div class="callout-sage">
+                <p><strong>Why phases matter:</strong> Most AI prompts dump everything at once and get things wrong. This prompt forces the AI to slow down, confirm what it knows, and only move forward when you're ready. That's what makes it actually useful.</p>
+            </div>
+
+            <h2 style="margin-top: 1.25rem;">The Kitchen Rescue Button</h2>
+            <p>Something went wrong mid-cook? Paste this into the same chat (or a new one) for immediate help.</p>
+
+            <div class="rescue-block">
+                <div class="rescue-header">
+                    <span class="prompt-label">Emergency Prompt - Copy &amp; Paste into AI</span>
+                    <button class="copy-btn" onclick="copyPrompt('rescue-prompt', this)">Copy</button>
+                </div>
+                <div class="prompt-text" id="rescue-prompt">Sous Chef, I have a kitchen emergency.
+
+Stop everything. Ask me: "What is the specific problem?"
+
+Once I describe the disaster (e.g., "I burned the gravy," "The guests are early," "I forgot to buy eggs"), provide 3 immediate, viable solutions. Keep instructions brief, calm, and action-oriented.</div>
+            </div>
+
+            <div class="callout-gold">
+                <h3>&#128161; When to use this</h3>
+                <p>Burned something. Forgot an ingredient. Guests showed up early. A dish didn't set. You're behind schedule. Anything that feels like a crisis in the moment. The AI won't panic. It'll give you three options and let you pick.</p>
+            </div>
+
+            <h2 style="margin-top: 1.25rem;">Tips for Best Results</h2>
+            <div class="tips-list">
+                <div class="tip-row">
+                    <span class="tip-icon">&#10003;</span>
+                    <p><strong>Share your actual recipes.</strong> Paste the full text, share a link, or even upload a photo. The more detail, the better the output.</p>
+                </div>
+                <div class="tip-row">
+                    <span class="tip-icon">&#10003;</span>
+                    <p><strong>Be honest about your kitchen.</strong> One oven? No stand mixer? Small counter space? Tell it. It plans around your reality.</p>
+                </div>
+                <div class="tip-row">
+                    <span class="tip-icon">&#10003;</span>
+                    <p><strong>Start with "All of the above."</strong> You can always skip a section, but getting the full picture helps you catch problems early.</p>
+                </div>
+                <div class="tip-row">
+                    <span class="tip-icon">&#10003;</span>
+                    <p><strong>Always double-check allergies and meat temps yourself.</strong> AI is a planning tool, not a food safety authority.</p>
+                </div>
+                <div class="tip-row">
+                    <span class="tip-icon">&#10003;</span>
+                    <p><strong>Use it more than once.</strong> Weeknight dinners, meal prep Sundays, holiday hosting. The prompt works for any scale.</p>
+                </div>
+            </div>
+
+            <div class="speech-bubble">
+                You know the food. Let AI handle the logistics.
+            </div>
+
+            <div class="pdf-footer">
+                <p class="footer-logo">Realistic Resources</p>
+                <p>By Emma Scher | realistic-resources.com</p>
+                <p style="font-family: 'Caveat', cursive; font-size: 10pt; color: #828a70;">Resources that meet you where you are</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function copyPrompt(id, btn) {
+            var text = document.getElementById(id).innerText;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function() {
+                    showCopied(btn);
+                });
+            } else {
+                var range = document.createRange();
+                range.selectNode(document.getElementById(id));
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                showCopied(btn);
+            }
+        }
+        function showCopied(btn) {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
