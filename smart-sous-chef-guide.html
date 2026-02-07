@@ -354,6 +354,19 @@
             color: #2E2E2E;
         }
 
+        /* ============ MOBILE STYLES ============ */
+        @media screen and (max-width: 600px) {
+            .content-wrap { padding: 1rem; }
+            .toolbar { padding: 0.5rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+            .toolbar-brand { font-size: 10pt; }
+            .pdf-title { font-size: 20pt; }
+            .pdf-subtitle { font-size: 12pt; }
+            .page-header-inner h2 { font-size: 16pt; }
+            .phase-grid { grid-template-columns: 1fr; }
+            .prompt-text { padding: 0.5rem 0.75rem; font-size: 8.5pt; max-height: 300px; }
+            .pdf-footer { text-align: center; }
+        }
+
         /* ============ PRINT ============ */
         @media print {
             body { background: #fff; font-size: 9.5pt; }

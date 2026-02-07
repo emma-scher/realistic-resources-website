@@ -286,6 +286,23 @@
         .checklist-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem; }
         .checklist-three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 0.75rem; }
 
+        /* ---- Mobile responsive ---- */
+        @media screen and (max-width: 600px) {
+            .content-wrap { padding: 1rem; }
+            .toolbar { padding: 0.5rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+            .toolbar-brand { font-size: 10pt; }
+            .header-title { font-size: 16pt; }
+            .header-script { font-size: 14pt; }
+            .two-col { grid-template-columns: 1fr; gap: 0.5rem; }
+            .checklist-two-col { grid-template-columns: 1fr; }
+            .checklist-three-col { grid-template-columns: 1fr; }
+            .notes-row { grid-template-columns: 1fr; }
+            .hero-bar h2 { font-size: 13pt; }
+            .card h3 { font-size: 11pt; }
+            .section-header { font-size: 11pt; }
+            .footer { flex-direction: column; gap: 0.25rem; text-align: center; }
+        }
+
         /* ---- Notes row ---- */
         .notes-row {
             display: grid;

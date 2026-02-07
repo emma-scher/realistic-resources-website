@@ -423,11 +423,21 @@ a:hover {
     padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featured-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .featured-card h3 {
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
+    color: var(--color-charcoal);
 }
 
 .featured-card p {

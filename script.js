@@ -49,17 +49,36 @@
             }
         });
 
-        // Filter cards
-        resourceCards.forEach(function(card) {
-            const cardType = card.getAttribute('data-type');
+        // Get the grid container
+        var grid = document.getElementById('resource-grid');
+        if (!grid) return;
 
+        // Collect visible cards and sort: available first, then coming-soon
+        var visibleCards = [];
+        resourceCards.forEach(function(card) {
+            var cardType = card.getAttribute('data-type');
             if (filter === 'all' || cardType === filter) {
                 card.style.display = '';
                 card.removeAttribute('hidden');
+                visibleCards.push(card);
             } else {
                 card.style.display = 'none';
                 card.setAttribute('hidden', '');
             }
+        });
+
+        // Sort: cards with .tag-free before cards with .tag-coming
+        visibleCards.sort(function(a, b) {
+            var aIsComingSoon = a.querySelector('.tag-coming') !== null;
+            var bIsComingSoon = b.querySelector('.tag-coming') !== null;
+            if (aIsComingSoon && !bIsComingSoon) return 1;
+            if (!aIsComingSoon && bIsComingSoon) return -1;
+            return 0;
+        });
+
+        // Re-append in sorted order (available first)
+        visibleCards.forEach(function(card) {
+            grid.appendChild(card);
         });
 
         // Announce filter change for screen readers
