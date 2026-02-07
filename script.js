@@ -86,6 +86,9 @@
     }
 
     if (filterButtons.length > 0 && resourceCards.length > 0) {
+        // Always sort on initial page load (available before coming-soon)
+        applyFilter('all');
+
         // Check for hash in URL and apply filter
         const hash = window.location.hash.replace('#', '');
         if (hash && document.querySelector('[data-filter="' + hash + '"]')) {
