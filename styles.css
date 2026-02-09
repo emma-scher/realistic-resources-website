@@ -928,6 +928,198 @@ a:hover {
     color: white !important;
 }
 
+/* --- Hero Buttons --- */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+/* --- Why Section (About Page) --- */
+.why-section {
+    background: var(--color-cream);
+    padding: 3rem 0;
+}
+
+.why-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.why-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.why-content .why-lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-charcoal);
+}
+
+.why-content strong {
+    color: var(--color-olive);
+}
+
+/* --- Form Styles --- */
+.form-section {
+    padding: 2rem 0 4rem;
+}
+
+.request-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--color-charcoal);
+}
+
+.form-group .optional {
+    font-weight: 400;
+    color: var(--color-slate);
+    font-size: 0.9rem;
+}
+
+.form-group .required {
+    color: var(--color-gold);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-tan);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: white;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-sage);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.form-note {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--color-slate);
+    font-style: italic;
+}
+
+/* --- Roadmap Styles --- */
+.roadmap-section {
+    padding: 2rem 0 4rem;
+}
+
+.roadmap-category {
+    margin-bottom: 3rem;
+}
+
+.roadmap-category h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.status-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-sage);
+    color: white;
+    font-size: 0.9rem;
+}
+
+.status-icon.progress {
+    background: var(--color-gold);
+}
+
+.status-icon.requested {
+    background: var(--color-slate);
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.roadmap-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border-left: 4px solid var(--color-sage);
+}
+
+.roadmap-card.progress {
+    border-left-color: var(--color-gold);
+    background: rgba(228, 168, 74, 0.05);
+}
+
+.roadmap-card.requested {
+    border-left-color: var(--color-slate);
+    background: rgba(122, 137, 166, 0.05);
+}
+
+.roadmap-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.roadmap-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.75rem;
+}
+
+.roadmap-cta {
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-cream);
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.roadmap-cta h2 {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.roadmap-cta p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
 /* --- Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {

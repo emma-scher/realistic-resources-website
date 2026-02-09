@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Refund Policy for Realistic Resources.">
-    <title>Refund Policy - Realistic Resources</title>
+    <meta name="description" content="Tell me what tool to build next. I'm building AI solutions based on what people actually need.">
+    <meta property="og:title" content="Request a Tool - Realistic Resources">
+    <meta property="og:description" content="Tell me what tool to build next. I'm building AI solutions based on what people actually need.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://realistic-resources.com/request.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Request a Tool - Realistic Resources">
+    <meta name="twitter:description" content="Tell me what tool to build next. Building AI solutions for real problems.">
+    <title>Request a Tool - Realistic Resources</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,37 +30,41 @@
                 <li><a href="resources.html">Free Tools</a></li>
                 <li><a href="roadmap.html">What I'm Building</a></li>
                 <li><a href="about.html">Why I'm Doing This</a></li>
-                <li><a href="request.html">Request a Tool</a></li>
+                <li><a href="request.html" aria-current="page">Request a Tool</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="main-content">
         <section class="page-header">
-            <h1>Refund Policy</h1>
+            <h1>What Should I Build Next?</h1>
+            <p>I'm building solutions based on what people actually need. Tell me: what's one thing you do that makes you think "there's GOT to be a better way"?</p>
         </section>
 
-        <section class="content-page">
+        <section class="form-section">
             <div class="container">
-                <p class="last-updated"><strong>Last updated:</strong> January 31, 2026</p>
+                <form class="request-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name <span class="optional">(optional)</span></label>
+                        <input type="text" id="name" name="name" placeholder="Your name">
+                    </div>
 
-                <h2>Business Information</h2>
-                <p>This Refund Policy applies to all purchases made through Realistic Resilience LLC, doing business as Realistic Resources, located in Golden, Colorado.</p>
+                    <div class="form-group">
+                        <label for="email">Email <span class="optional">(optional - only if you want updates)</span></label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com">
+                    </div>
 
-                <h2>Digital Products: All Sales Final</h2>
-                <p>All sales of digital products are final. No refunds or exchanges will be issued once a purchase is completed and the digital product has been delivered.</p>
-                <p>This policy exists because digital products can be accessed and used immediately upon delivery and cannot be "returned" in the traditional sense.</p>
+                    <div class="form-group">
+                        <label for="request">What's one thing that shouldn't be this hard? <span class="required">*</span></label>
+                        <textarea id="request" name="request" rows="6" required placeholder="Tell me about a problem you face regularly. What takes too long? What's confusing? What do you wish someone would just solve?"></textarea>
+                    </div>
 
-                <h2>Technical Issues</h2>
-                <p>If you experience a technical issue that prevents you from accessing a product you have purchased, please contact us at <a href="mailto:emma@realistic-resources.com">emma@realistic-resources.com</a> and we will work to resolve the access issue.</p>
+                    <button type="submit" class="btn btn-primary btn-large">Send Request</button>
+                </form>
 
-                <h2>Contact Us</h2>
-                <p>If you have questions about this Refund Policy, please contact us at:</p>
-                <p>
-                    <strong>Realistic Resilience LLC</strong><br>
-                    Golden, CO<br>
-                    Email: <a href="mailto:emma@realistic-resources.com">emma@realistic-resources.com</a>
-                </p>
+                <div class="form-note">
+                    <p>Every request gets read. The most common problems become the next tools I build.</p>
+                </div>
             </div>
         </section>
     </main>
@@ -74,8 +85,6 @@
                 <a href="terms.html">Terms of Service</a>
                 <span>|</span>
                 <a href="privacy.html">Privacy Policy</a>
-                <span>|</span>
-                <a href="refund.html">Refund Policy</a>
             </div>
             <p class="copyright">&copy; 2026 Realistic Resources. All rights reserved.</p>
         </div>
