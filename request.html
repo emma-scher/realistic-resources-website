@@ -43,25 +43,18 @@
 
         <section class="form-section">
             <div class="container">
-                <form class="request-form" name="tool-request" method="POST" data-netlify="true">
-                    <input type="hidden" name="form-name" value="tool-request">
-                    <div class="form-group">
-                        <label for="name">Name <span class="optional">(optional)</span></label>
-                        <input type="text" id="name" name="name" placeholder="Your name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email <span class="optional">(optional - only if you want updates)</span></label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="request">What's one thing that shouldn't be this hard? <span class="required">*</span></label>
-                        <textarea id="request" name="request" rows="6" required placeholder="Tell me about a problem you face regularly. What takes too long? What's confusing? What do you wish someone would just solve?"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-large">Send Request</button>
-                </form>
+                <div class="airtable-form-container">
+                    <!-- Replace YOUR_AIRTABLE_FORM_ID with your actual Airtable form ID -->
+                    <!-- To get this: Airtable > Your Base > Create Form View > Share > Get embed code -->
+                    <iframe
+                        class="airtable-embed"
+                        src="https://airtable.com/embed/YOUR_AIRTABLE_FORM_ID?backgroundColor=green"
+                        frameborder="0"
+                        width="100%"
+                        height="600"
+                        style="background: transparent;">
+                    </iframe>
+                </div>
 
                 <div class="form-note">
                     <p>Every request gets read. The most common problems become the next tools I build.</p>

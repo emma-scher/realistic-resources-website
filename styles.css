@@ -1032,6 +1032,17 @@ a:hover {
     font-style: italic;
 }
 
+.airtable-form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.airtable-embed {
+    border-radius: 8px;
+}
+
 /* --- Roadmap Styles --- */
 .roadmap-section {
     padding: 2rem 0 4rem;
