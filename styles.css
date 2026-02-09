@@ -939,8 +939,9 @@ a:hover {
 
 /* --- Why Section (About Page) --- */
 .why-section {
-    background: var(--color-cream);
+    background: white;
     padding: 3rem 0;
+    border-top: 1px solid var(--color-tan);
 }
 
 .why-content {

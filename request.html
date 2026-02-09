@@ -43,7 +43,8 @@
 
         <section class="form-section">
             <div class="container">
-                <form class="request-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form class="request-form" name="tool-request" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="tool-request">
                     <div class="form-group">
                         <label for="name">Name <span class="optional">(optional)</span></label>
                         <input type="text" id="name" name="name" placeholder="Your name">
