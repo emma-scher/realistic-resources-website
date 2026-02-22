@@ -170,6 +170,87 @@
         });
     });
 
+    // Recipe Substitutions Accordion
+    (function initRecipeAccordion() {
+        var accordionItems = document.querySelectorAll('.accordion-item');
+        var subIcons = document.querySelectorAll('.sub-icon');
+
+        if (accordionItems.length === 0) return;
+
+        // Toggle accordion item
+        function toggleAccordion(item, shouldOpen) {
+            var trigger = item.querySelector('.accordion-trigger');
+            var content = item.querySelector('.accordion-content');
+
+            if (shouldOpen) {
+                trigger.setAttribute('aria-expanded', 'true');
+                content.removeAttribute('hidden');
+            } else {
+                trigger.setAttribute('aria-expanded', 'false');
+                content.setAttribute('hidden', '');
+            }
+        }
+
+        // Close all accordion items
+        function closeAllAccordions() {
+            accordionItems.forEach(function(item) {
+                toggleAccordion(item, false);
+            });
+        }
+
+        // Handle accordion trigger clicks
+        accordionItems.forEach(function(item) {
+            var trigger = item.querySelector('.accordion-trigger');
+
+            trigger.addEventListener('click', function() {
+                var isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                // Close all others first (optional single-open behavior)
+                closeAllAccordions();
+
+                // Toggle this one
+                if (!isExpanded) {
+                    toggleAccordion(item, true);
+                }
+            });
+        });
+
+        // Handle substitution icon clicks
+        subIcons.forEach(function(icon) {
+            icon.addEventListener('click', function() {
+                var ingredientId = this.getAttribute('data-ingredient');
+                var targetItem = document.querySelector('.accordion-item[data-ingredient="' + ingredientId + '"]');
+
+                if (!targetItem) return;
+
+                // Close all and open the target
+                closeAllAccordions();
+                toggleAccordion(targetItem, true);
+
+                // Scroll to the item with offset for header
+                var headerOffset = 100;
+                var elementPosition = targetItem.getBoundingClientRect().top;
+                var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Add highlight animation
+                targetItem.classList.remove('is-highlighted');
+                // Trigger reflow to restart animation
+                void targetItem.offsetWidth;
+                targetItem.classList.add('is-highlighted');
+
+                // Focus the trigger for accessibility
+                setTimeout(function() {
+                    targetItem.querySelector('.accordion-trigger').focus();
+                }, 400);
+            });
+        });
+    })();
+
     // Lazy load images for better performance
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver(function(entries, observer) {
