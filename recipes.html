@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tell me what tool to build next. I'm building AI solutions based on what people actually need.">
-    <meta property="og:title" content="Request a Tool - Realistic Resources">
-    <meta property="og:description" content="Tell me what tool to build next. I'm building AI solutions based on what people actually need.">
+    <meta name="description" content="Recipes with built-in ingredient substitutions. From a former professional chef who knows what actually works in real kitchens.">
+    <meta property="og:title" content="Recipes - Realistic Resources">
+    <meta property="og:description" content="Recipes with built-in ingredient substitutions. From a former professional chef.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://realistic-resources.com/request.html">
+    <meta property="og:url" content="https://realistic-resources.com/recipes.html">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Request a Tool - Realistic Resources">
-    <meta name="twitter:description" content="Tell me what tool to build next. Building AI solutions for real problems.">
-    <title>Request a Tool - Realistic Resources</title>
+    <meta name="twitter:title" content="Recipes - Realistic Resources">
+    <meta name="twitter:description" content="Recipes with built-in ingredient substitutions. From a former professional chef.">
+    <title>Recipes - Realistic Resources</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,24 +28,41 @@
             </button>
             <ul id="nav-menu" class="nav-menu">
                 <li><a href="resources.html">Free Tools</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="recipes.html" aria-current="page">Recipes</a></li>
                 <li><a href="roadmap.html">What I'm Building</a></li>
                 <li><a href="about.html">Why I'm Doing This</a></li>
-                <li><a href="request.html" aria-current="page">Request a Tool</a></li>
+                <li><a href="request.html">Request a Tool</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="main-content">
         <section class="page-header">
-            <h1>What Should I Build Next?</h1>
-            <p>I'm building solutions based on what people actually need. Tell me: what's one thing you do that makes you think "there's GOT to be a better way"?</p>
+            <p class="script-tagline">From a former professional chef</p>
+            <h1>Recipes</h1>
+            <p>Real recipes with built-in substitutions. Because you shouldn't need a grocery run to make dinner.</p>
         </section>
 
-        <section class="form-section">
+        <section class="resources-section" aria-label="All recipes">
             <div class="container">
-                <div class="form-placeholder">
-                    <p>Form coming soon. In the meantime, email me at <a href="mailto:emma@realistic-resources.com">emma@realistic-resources.com</a></p>
+                <div class="resource-grid">
+
+                    <article class="resource-card">
+                        <div class="resource-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&h=375&fit=crop" alt="Creamy white bean soup in a bowl" loading="lazy">
+                        </div>
+                        <div class="resource-content">
+                            <span class="resource-tag tag-free">Free</span>
+                            <h3>Creamy Tuscan White Bean Soup</h3>
+                            <p>A comforting, protein-rich soup with built-in ingredient substitutions. See what swaps work when you're missing something.</p>
+                            <a href="recipe-template.html"
+                               class="btn btn-secondary btn-small"
+                               aria-label="View Creamy Tuscan White Bean Soup recipe">
+                                View Recipe
+                            </a>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
@@ -68,6 +85,8 @@
                 <a href="terms.html">Terms of Service</a>
                 <span>|</span>
                 <a href="privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="refund.html">Refund Policy</a>
             </div>
             <p class="copyright">&copy; 2026 Realistic Resources. All rights reserved.</p>
         </div>
